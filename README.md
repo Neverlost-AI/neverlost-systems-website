@@ -4,7 +4,7 @@ Private source repository for the public-facing Neverlost Systems website.
 
 ## Purpose
 
-The site introduces Neverlost Systems, Neverlost OS, and related healthcare, disability, education, and supported-decision-making work to academic, professional, and community audiences.
+The site introduces Neverlost Systems, Neverlost OS, and related healthcare, disability, education, and supported-decision-making work to academic, professional and community audiences.
 
 ## Current scope
 
