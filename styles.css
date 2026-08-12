@@ -9,6 +9,12 @@
   --brand-dark: #0d3e9d;
   --dark: #0f1d30;
   --dark-soft: #172943;
+  --modern-cream: #F7F3E9;
+  --modern-paper: #FFFCF4;
+  --modern-ink: #171512;
+  --modern-gold: #A79567;
+  --modern-gold-dark: #877348;
+  --modern-line: #D9CEB8;
   --max-width: 1160px;
   --radius: 22px;
   --shadow: 0 18px 50px rgba(15, 29, 48, 0.08);
@@ -391,6 +397,44 @@ h3 {
 
 .about-grid {
   grid-template-columns: 0.85fr 1.15fr;
+}
+
+#about .about-grid > div:last-child > div {
+  background: var(--modern-paper);
+  border: 1px solid var(--modern-line);
+}
+
+#about .about-grid > div:last-child > div > img {
+  width: 100% !important;
+  max-width: 430px;
+  margin: 0 0 1.25rem !important;
+  padding: 1rem 1.2rem;
+  background: var(--modern-cream);
+  border-bottom: 1px solid var(--modern-line);
+}
+
+#about .about-grid > div:last-child > div > p,
+#about .about-grid > div:last-child > div > a {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+#about .about-grid > div:last-child > div > p {
+  color: var(--modern-ink);
+}
+
+#about .about-grid > div:last-child > div > .button-secondary {
+  margin-bottom: 1.35rem;
+  color: var(--modern-ink);
+  background: var(--modern-gold);
+  border-color: var(--modern-gold);
+}
+
+#about .about-grid > div:last-child > div > .button-secondary:hover,
+#about .about-grid > div:last-child > div > .button-secondary:focus-visible {
+  color: var(--modern-paper);
+  background: var(--modern-gold-dark);
+  border-color: var(--modern-gold-dark);
 }
 
 .contact-section {
