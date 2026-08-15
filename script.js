@@ -2,7 +2,6 @@ const navToggle = document.querySelector('.nav-toggle');
 const primaryNav = document.querySelector('.primary-nav');
 const year = document.querySelector('#year');
 const brandMark = document.querySelector('.brand-mark');
-const heroLede = document.querySelector('.hero-lede');
 
 const brandStylesheet = document.createElement('link');
 brandStylesheet.rel = 'stylesheet';
@@ -22,10 +21,6 @@ if (brandMark) {
   logo.alt = '';
   logo.setAttribute('aria-hidden', 'true');
   brandMark.replaceWith(logo);
-}
-
-if (heroLede) {
-  heroLede.textContent = 'Neverlost Systems is developing tools that help people preserve evidence, organize complex situations, and create clearer context for decisions that remain under human control.';
 }
 
 if (year) {
