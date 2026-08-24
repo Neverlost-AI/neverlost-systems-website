@@ -2,6 +2,9 @@ const navToggle = document.querySelector('.nav-toggle');
 const primaryNav = document.querySelector('.primary-nav');
 const year = document.querySelector('#year');
 const brandMark = document.querySelector('.brand-mark');
+const contactDialog = document.querySelector('#contact-dialog');
+const contactOpen = document.querySelector('#contact-open');
+const contactClose = document.querySelector('#contact-close');
 
 const brandStylesheet = document.createElement('link');
 brandStylesheet.rel = 'stylesheet';
@@ -37,6 +40,17 @@ if (navToggle && primaryNav) {
     if (event.target instanceof HTMLAnchorElement) {
       primaryNav.classList.remove('is-open');
       navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+if (contactDialog && contactOpen && contactClose) {
+  contactOpen.addEventListener('click', () => contactDialog.showModal());
+  contactClose.addEventListener('click', () => contactDialog.close());
+
+  contactDialog.addEventListener('click', (event) => {
+    if (event.target === contactDialog) {
+      contactDialog.close();
     }
   });
 }
