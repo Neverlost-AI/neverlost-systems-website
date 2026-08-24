@@ -201,8 +201,8 @@
         <h2>Help test where persistent decision support can matter.</h2>
         <p class="section-lede">Neverlost Systems is exploring research collaborations, pilot partnerships, validation opportunities, and pathways for further development and commercialization.</p>
       </div>
-      <div class="container contact-card">
-        <div>
+      <div class="container contact-card" style="align-items:flex-start;">
+        <div style="flex:1;min-width:0;">
           <h3>Start a focused conversation</h3>
           <ul class="contact-topics" aria-label="Reasons to contact Neverlost Systems">
             <li>Research Collaboration</li>
@@ -210,8 +210,47 @@
             <li>Technical Collaboration</li>
             <li>Early-Stage Funding &amp; Strategic Partnerships</li>
           </ul>
+          <p style="margin-top:1.5rem;color:var(--text-muted);font-size:.92rem;">Prefer email? Write directly to <a href="mailto:neverlostsells@gmail.com" style="color:var(--brand);font-weight:700;">neverlostsells@gmail.com</a>.</p>
         </div>
-        <a class="button button-primary" href="mailto:neverlostsells@gmail.com">Contact Neverlost Systems</a>
+
+        <form action="https://formsubmit.co/neverlostsells@gmail.com" method="POST" style="display:grid;gap:1rem;flex:1;width:100%;max-width:520px;">
+          <input type="hidden" name="_subject" value="New Neverlost Systems website inquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://neverlostsystems.com/thanks.html">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;">
+            <label style="display:grid;gap:.4rem;font-size:.88rem;font-weight:700;">Name
+              <input type="text" name="name" autocomplete="name" required style="width:100%;min-height:48px;padding:.75rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;">
+            </label>
+            <label style="display:grid;gap:.4rem;font-size:.88rem;font-weight:700;">Email
+              <input type="email" name="email" autocomplete="email" required style="width:100%;min-height:48px;padding:.75rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;">
+            </label>
+          </div>
+
+          <label style="display:grid;gap:.4rem;font-size:.88rem;font-weight:700;">Organization <span style="font-weight:500;color:var(--text-muted);">(optional)</span>
+            <input type="text" name="organization" autocomplete="organization" style="width:100%;min-height:48px;padding:.75rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;">
+          </label>
+
+          <label style="display:grid;gap:.4rem;font-size:.88rem;font-weight:700;">Reason for reaching out
+            <select name="reason" required style="width:100%;min-height:48px;padding:.75rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;">
+              <option value="" selected disabled>Select a topic</option>
+              <option>Research collaboration</option>
+              <option>Pilot partnership</option>
+              <option>Technical collaboration</option>
+              <option>Funding or strategic partnership</option>
+              <option>Patient advocacy inquiry</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label style="display:grid;gap:.4rem;font-size:.88rem;font-weight:700;">Message
+            <textarea name="message" rows="6" required style="width:100%;padding:.75rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;resize:vertical;"></textarea>
+          </label>
+
+          <button class="button button-primary" type="submit" style="cursor:pointer;width:max-content;">Send message</button>
+          <p style="margin:0;color:var(--text-muted);font-size:.8rem;">Please do not submit sensitive medical, legal, financial, or other private records through this form.</p>
+        </form>
       </div>
     </section>
 
