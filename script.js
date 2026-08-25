@@ -42,6 +42,152 @@ if (navToggle && primaryNav) {
   });
 }
 
+const caseScreenshots = Array.from(document.querySelectorAll('.case-proof-card img'));
+
+if (caseScreenshots.length) {
+  const lightboxStyles = document.createElement('style');
+  lightboxStyles.textContent = `
+    .case-proof-card img {
+      cursor: zoom-in;
+    }
+    .case-proof-card img:focus-visible {
+      outline: 3px solid var(--brand);
+      outline-offset: -3px;
+    }
+    .image-lightbox {
+      width: min(96vw, 1500px);
+      max-width: none;
+      max-height: 96vh;
+      margin: auto;
+      padding: 0;
+      overflow: visible;
+      background: transparent;
+      border: 0;
+    }
+    .image-lightbox::backdrop {
+      background: rgba(5, 12, 24, .9);
+      backdrop-filter: blur(5px);
+    }
+    .image-lightbox-shell {
+      position: relative;
+      display: flex;
+      max-height: 94vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+    }
+    .image-lightbox-image {
+      display: block;
+      max-width: 94vw;
+      max-height: 84vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 24px 90px rgba(0, 0, 0, .45);
+    }
+    .image-lightbox-caption {
+      max-width: min(94vw, 900px);
+      margin: 0;
+      color: #f5f8fc;
+      font-size: .92rem;
+      text-align: center;
+    }
+    .image-lightbox-close {
+      position: fixed;
+      top: max(1rem, env(safe-area-inset-top));
+      right: max(1rem, env(safe-area-inset-right));
+      z-index: 2;
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      padding: 0;
+      cursor: pointer;
+      color: #fff;
+      background: rgba(15, 29, 48, .88);
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 999px;
+      font: inherit;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    .image-lightbox-hint {
+      margin: 0;
+      color: rgba(245, 248, 252, .7);
+      font-size: .76rem;
+      text-align: center;
+    }
+  `;
+  document.head.appendChild(lightboxStyles);
+
+  const lightbox = document.createElement('dialog');
+  lightbox.className = 'image-lightbox';
+  lightbox.setAttribute('aria-label', 'Expanded Case Navigator screenshot');
+  lightbox.innerHTML = `
+    <div class="image-lightbox-shell">
+      <button class="image-lightbox-close" type="button" aria-label="Close expanded screenshot">×</button>
+      <img class="image-lightbox-image" alt="">
+      <p class="image-lightbox-caption"></p>
+      <p class="image-lightbox-hint">Press Escape or click outside the image to close.</p>
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImage = lightbox.querySelector('.image-lightbox-image');
+  const lightboxCaption = lightbox.querySelector('.image-lightbox-caption');
+  const lightboxClose = lightbox.querySelector('.image-lightbox-close');
+  let lastTrigger = null;
+
+  const openLightbox = (image) => {
+    const card = image.closest('.case-proof-card');
+    const caption = card ? card.querySelector('figcaption') : null;
+    lastTrigger = image;
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt;
+    lightboxCaption.textContent = caption ? caption.textContent.trim() : image.alt;
+    lightbox.showModal();
+    lightboxClose.focus();
+  };
+
+  const closeLightbox = () => {
+    if (lightbox.open) {
+      lightbox.close();
+    }
+  };
+
+  caseScreenshots.forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', `${image.alt}. Open full-size image.`);
+
+    image.addEventListener('click', () => openLightbox(image));
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openLightbox(image);
+      }
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  lightbox.addEventListener('close', () => {
+    lightboxImage.removeAttribute('src');
+    if (lastTrigger) {
+      lastTrigger.focus();
+    }
+  });
+}
+
 if (contactOpen) {
   const modalStyles = document.createElement('style');
   modalStyles.textContent = `
