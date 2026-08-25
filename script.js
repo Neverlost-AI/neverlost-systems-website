@@ -76,11 +76,12 @@ if (caseScreenshots.length) {
       align-items: center;
       justify-content: center;
       gap: .8rem;
+      padding: 0 4.25rem;
     }
     .image-lightbox-image {
       display: block;
-      max-width: 94vw;
-      max-height: 84vh;
+      max-width: min(86vw, 1380px);
+      max-height: 82vh;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -89,20 +90,15 @@ if (caseScreenshots.length) {
       box-shadow: 0 24px 90px rgba(0, 0, 0, .45);
     }
     .image-lightbox-caption {
-      max-width: min(94vw, 900px);
+      max-width: min(88vw, 900px);
       margin: 0;
       color: #f5f8fc;
       font-size: .92rem;
       text-align: center;
     }
-    .image-lightbox-close {
-      position: fixed;
-      top: max(1rem, env(safe-area-inset-top));
-      right: max(1rem, env(safe-area-inset-right));
-      z-index: 2;
+    .image-lightbox-close,
+    .image-lightbox-nav {
       display: grid;
-      width: 46px;
-      height: 46px;
       place-items: center;
       padding: 0;
       cursor: pointer;
@@ -111,8 +107,38 @@ if (caseScreenshots.length) {
       border: 1px solid rgba(255, 255, 255, .28);
       border-radius: 999px;
       font: inherit;
-      font-size: 1.5rem;
       line-height: 1;
+    }
+    .image-lightbox-close {
+      position: fixed;
+      top: max(1rem, env(safe-area-inset-top));
+      right: max(1rem, env(safe-area-inset-right));
+      z-index: 3;
+      width: 46px;
+      height: 46px;
+      font-size: 1.5rem;
+    }
+    .image-lightbox-nav {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 52px;
+      height: 52px;
+      transform: translateY(-50%);
+      font-size: 2rem;
+    }
+    .image-lightbox-prev {
+      left: .35rem;
+    }
+    .image-lightbox-next {
+      right: .35rem;
+    }
+    .image-lightbox-nav:hover,
+    .image-lightbox-nav:focus-visible,
+    .image-lightbox-close:hover,
+    .image-lightbox-close:focus-visible {
+      background: rgba(19, 87, 212, .96);
+      outline: none;
     }
     .image-lightbox-hint {
       margin: 0;
@@ -120,18 +146,34 @@ if (caseScreenshots.length) {
       font-size: .76rem;
       text-align: center;
     }
+    @media (max-width: 640px) {
+      .image-lightbox-shell {
+        padding: 0 3rem;
+      }
+      .image-lightbox-nav {
+        width: 42px;
+        height: 42px;
+        font-size: 1.6rem;
+      }
+      .image-lightbox-image {
+        max-width: 88vw;
+        max-height: 76vh;
+      }
+    }
   `;
   document.head.appendChild(lightboxStyles);
 
   const lightbox = document.createElement('dialog');
   lightbox.className = 'image-lightbox';
-  lightbox.setAttribute('aria-label', 'Expanded Case Navigator screenshot');
+  lightbox.setAttribute('aria-label', 'Expanded Case Navigator screenshot gallery');
   lightbox.innerHTML = `
     <div class="image-lightbox-shell">
       <button class="image-lightbox-close" type="button" aria-label="Close expanded screenshot">×</button>
+      <button class="image-lightbox-nav image-lightbox-prev" type="button" aria-label="Previous screenshot">‹</button>
       <img class="image-lightbox-image" alt="">
+      <button class="image-lightbox-nav image-lightbox-next" type="button" aria-label="Next screenshot">›</button>
       <p class="image-lightbox-caption"></p>
-      <p class="image-lightbox-hint">Press Escape or click outside the image to close.</p>
+      <p class="image-lightbox-hint">Use the arrow buttons or ← / → keys to browse. Press Escape or click outside to close.</p>
     </div>
   `;
   document.body.appendChild(lightbox);
@@ -139,15 +181,26 @@ if (caseScreenshots.length) {
   const lightboxImage = lightbox.querySelector('.image-lightbox-image');
   const lightboxCaption = lightbox.querySelector('.image-lightbox-caption');
   const lightboxClose = lightbox.querySelector('.image-lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.image-lightbox-prev');
+  const lightboxNext = lightbox.querySelector('.image-lightbox-next');
   let lastTrigger = null;
+  let currentIndex = 0;
 
-  const openLightbox = (image) => {
+  const showScreenshot = (index) => {
+    currentIndex = (index + caseScreenshots.length) % caseScreenshots.length;
+    const image = caseScreenshots[currentIndex];
     const card = image.closest('.case-proof-card');
     const caption = card ? card.querySelector('figcaption') : null;
-    lastTrigger = image;
+
     lightboxImage.src = image.currentSrc || image.src;
     lightboxImage.alt = image.alt;
-    lightboxCaption.textContent = caption ? caption.textContent.trim() : image.alt;
+    lightboxCaption.textContent = `${currentIndex + 1} of ${caseScreenshots.length} · ${caption ? caption.textContent.trim() : image.alt}`;
+  };
+
+  const openLightbox = (image) => {
+    const index = caseScreenshots.indexOf(image);
+    lastTrigger = image;
+    showScreenshot(index >= 0 ? index : 0);
     lightbox.showModal();
     lightboxClose.focus();
   };
@@ -157,6 +210,9 @@ if (caseScreenshots.length) {
       lightbox.close();
     }
   };
+
+  const showPrevious = () => showScreenshot(currentIndex - 1);
+  const showNext = () => showScreenshot(currentIndex + 1);
 
   caseScreenshots.forEach((image) => {
     image.tabIndex = 0;
@@ -172,7 +228,19 @@ if (caseScreenshots.length) {
     });
   });
 
+  lightboxPrev.addEventListener('click', showPrevious);
+  lightboxNext.addEventListener('click', showNext);
   lightboxClose.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      showPrevious();
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      showNext();
+    }
+  });
 
   lightbox.addEventListener('click', (event) => {
     if (event.target === lightbox) {
