@@ -40,6 +40,23 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Match the two supporting CTAs to the primary hero action. */
+.hero-actions .button-secondary,
+.case-feature-copy .button-secondary {
+  color: #ffffff;
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.hero-actions .button-secondary:hover,
+.hero-actions .button-secondary:focus-visible,
+.case-feature-copy .button-secondary:hover,
+.case-feature-copy .button-secondary:focus-visible {
+  color: #ffffff;
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
 /* Light sections receive a soft blue wash from the top-right corner. */
 main > .section {
   position: relative;
