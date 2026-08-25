@@ -9,6 +9,58 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    #products .product-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .case-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+
+    .case-proof-card {
+      margin: 0;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .case-proof-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top left;
+      background: var(--surface-muted);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .case-proof-card figcaption {
+      padding: 1.35rem 1.45rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .case-proof-card strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--text);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      #products .product-grid,
+      .case-proof-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -93,12 +145,28 @@
             <p class="product-detail">Synthetic case · Prototype demonstration</p>
             <a class="button button-secondary" href="https://youtu.be/LqU7pvqd4n4" target="_blank" rel="noreferrer">Watch Case Navigator demo <span aria-hidden="true">↗</span></a>
           </article>
-          <article class="product-card">
-            <p class="product-status">In Development</p>
-            <h3>Codex Capacity Governor</h3>
-            <p>AI development capacity governance for planning and completing bounded development work within constrained coding capacity.</p>
-            <p class="product-detail">Designed around capacity-aware preflight planning, bounded work, and avoiding implementation runs becoming stranded before verification. Future development may support forecast-versus-actual learning.</p>
-          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="case-navigator-proof" class="section section-muted">
+      <div class="container">
+        <p class="eyebrow">Case Navigator · Working prototype</p>
+        <h2>Human review stays visible from source to accepted state.</h2>
+        <p class="section-lede">The current synthetic demonstration shows how AI can help surface evidence-grounded proposals without quietly becoming the decision-maker. Source material remains visible, proposals remain unreviewed until a person acts, and accepted statements stay traceable downstream.</p>
+        <div class="case-proof-grid" aria-label="Case Navigator prototype screenshots">
+          <figure class="case-proof-card">
+            <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/openai-proposal-unreviewed.png" alt="Case Navigator showing an AI-generated proposal awaiting human review" loading="lazy">
+            <figcaption><strong>Proposal before authority</strong>AI-generated candidates enter review as unreviewed. A person must accept, edit, reject, or hold them before they can affect accepted case state.</figcaption>
+          </figure>
+          <figure class="case-proof-card">
+            <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/accepted-case-timeline.png" alt="Case Navigator accepted case timeline" loading="lazy">
+            <figcaption><strong>Accepted state over time</strong>Only reviewed, accepted statements appear in the case timeline and deterministic downstream outputs.</figcaption>
+          </figure>
+          <figure class="case-proof-card">
+            <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/statement-provenance.png" alt="Case Navigator statement provenance view" loading="lazy">
+            <figcaption><strong>Traceable provenance</strong>Accepted statements remain connected to their source evidence and review decision so later outputs can be inspected rather than taken on faith.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -137,13 +205,13 @@
     <section id="work" class="section section-muted">
       <div class="container">
         <p class="eyebrow">Public work</p>
-        <h2>Early demonstrations of the Neverlost direction.</h2>
-        <p class="section-lede">These public materials show parts of the problem space and design approach. They are demonstrations and essays, not finished clinical, legal, or educational products.</p>
+        <h2>Working demonstrations of the Neverlost approach.</h2>
+        <p class="section-lede">These public materials show different parts of the systems approach through working prototypes and frameworks. They are demonstrations, not finished clinical, legal, or educational products.</p>
         <div class="project-grid">
           <article class="project-card">
             <div class="project-type">Prototype</div>
-            <h3>Neverlost OS — Build Week</h3>
-            <p>A presentation of a human-centered system for preserving evidence, organizing complex cases, and producing inspectable context.</p>
+            <h3>Neverlost Governed Workflow</h3>
+            <p>A working demonstration of source-bound evidence, capacity-aware coordination, deterministic validation, and explicit human review before accepted output.</p>
             <a href="https://youtu.be/5DefEcMeJ6w" target="_blank" rel="noreferrer">Watch the demonstration <span aria-hidden="true">↗</span></a>
           </article>
           <article class="project-card">
@@ -153,10 +221,10 @@
             <a href="https://youtu.be/7zIodESXarQ" target="_blank" rel="noreferrer">View the pathway <span aria-hidden="true">↗</span></a>
           </article>
           <article class="project-card">
-            <div class="project-type">Essay</div>
-            <h3>The Patient’s Paradox</h3>
-            <p>An exploration of what happens when the people most responsible for explaining a complex condition have the least capacity to do so.</p>
-            <a href="https://youtu.be/eST8JpADyYY" target="_blank" rel="noreferrer">Watch the essay <span aria-hidden="true">↗</span></a>
+            <div class="project-type">Prototype</div>
+            <h3>Capacity-Aware Publishing</h3>
+            <p>A governed, recovery-aware publishing workflow that turns approved source into validated media packages while preserving human release authority.</p>
+            <a href="https://youtu.be/nQpAkjY9roA" target="_blank" rel="noreferrer">Watch the demonstration <span aria-hidden="true">↗</span></a>
           </article>
         </div>
       </div>
