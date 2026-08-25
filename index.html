@@ -11,18 +11,16 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     #products .product-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
     }
 
-    .case-proof-grid {
+    #products .product-card-foundation {
+      min-height: auto;
+    }
+
+    .case-feature {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
-      margin-top: 3rem;
-    }
-
-    .case-proof-card {
-      margin: 0;
+      grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
       overflow: hidden;
       background: var(--surface);
       border: 1px solid var(--line);
@@ -30,34 +28,86 @@
       box-shadow: var(--shadow);
     }
 
+    .case-feature-copy {
+      padding: 2rem;
+    }
+
+    .case-feature-copy > p:not(.product-status) {
+      color: var(--text-muted);
+    }
+
+    .case-feature-copy .button {
+      margin-top: 0.35rem;
+    }
+
+    .case-gallery-wrap {
+      min-width: 0;
+      padding: 1.25rem 0 1.25rem 1.25rem;
+      background: var(--surface-muted);
+      border-left: 1px solid var(--line);
+    }
+
+    .case-gallery-label {
+      margin: 0 1.25rem 0.75rem 0;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .case-gallery {
+      display: flex;
+      gap: 0.9rem;
+      overflow-x: auto;
+      padding: 0 1.25rem 0.55rem 0;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+    }
+
+    .case-proof-card {
+      flex: 0 0 min(360px, 78vw);
+      margin: 0;
+      overflow: hidden;
+      scroll-snap-align: start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
     .case-proof-card img {
       display: block;
       width: 100%;
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       object-position: top left;
-      background: var(--surface-muted);
+      background: #fff;
       border-bottom: 1px solid var(--line);
     }
 
     .case-proof-card figcaption {
-      padding: 1.35rem 1.45rem 1.5rem;
+      padding: 0.85rem 1rem 1rem;
       color: var(--text-muted);
-      font-size: 0.94rem;
+      font-size: 0.84rem;
+      line-height: 1.45;
     }
 
     .case-proof-card strong {
       display: block;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.25rem;
       color: var(--text);
       font-family: "Manrope", system-ui, sans-serif;
-      font-size: 1rem;
+      font-size: 0.92rem;
     }
 
     @media (max-width: 900px) {
-      #products .product-grid,
-      .case-proof-grid {
+      .case-feature {
         grid-template-columns: 1fr;
+      }
+
+      .case-gallery-wrap {
+        border-top: 1px solid var(--line);
+        border-left: 0;
       }
     }
   </style>
@@ -138,35 +188,34 @@
             <h3>Neverlost OS</h3>
             <p>The underlying systems architecture behind Neverlost applications, focused on persistent context, provenance, bounded action, verification, and preserving validated outcomes.</p>
           </article>
-          <article class="product-card">
-            <p class="product-status">In Development</p>
-            <h3>Case Navigator</h3>
-            <p>A healthcare and disability navigation application being developed to help people organize complex information, preserve case context, and prepare for human-controlled decisions.</p>
-            <p class="product-detail">Synthetic case · Prototype demonstration</p>
-            <a class="button button-secondary" href="https://youtu.be/LqU7pvqd4n4" target="_blank" rel="noreferrer">Watch Case Navigator demo <span aria-hidden="true">↗</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section id="case-navigator-proof" class="section section-muted">
-      <div class="container">
-        <p class="eyebrow">Case Navigator · Working prototype</p>
-        <h2>Human review stays visible from source to accepted state.</h2>
-        <p class="section-lede">The current synthetic demonstration shows how AI can help surface evidence-grounded proposals without quietly becoming the decision-maker. Source material remains visible, proposals remain unreviewed until a person acts, and accepted statements stay traceable downstream.</p>
-        <div class="case-proof-grid" aria-label="Case Navigator prototype screenshots">
-          <figure class="case-proof-card">
-            <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/openai-proposal-unreviewed.png" alt="Case Navigator showing an AI-generated proposal awaiting human review" loading="lazy">
-            <figcaption><strong>Proposal before authority</strong>AI-generated candidates enter review as unreviewed. A person must accept, edit, reject, or hold them before they can affect accepted case state.</figcaption>
-          </figure>
-          <figure class="case-proof-card">
-            <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/accepted-case-timeline.png" alt="Case Navigator accepted case timeline" loading="lazy">
-            <figcaption><strong>Accepted state over time</strong>Only reviewed, accepted statements appear in the case timeline and deterministic downstream outputs.</figcaption>
-          </figure>
-          <figure class="case-proof-card">
-            <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/statement-provenance.png" alt="Case Navigator statement provenance view" loading="lazy">
-            <figcaption><strong>Traceable provenance</strong>Accepted statements remain connected to their source evidence and review decision so later outputs can be inspected rather than taken on faith.</figcaption>
-          </figure>
+          <article class="case-feature">
+            <div class="case-feature-copy">
+              <p class="product-status">In Development · Working prototype</p>
+              <h3>Case Navigator</h3>
+              <p>A healthcare and disability navigation application being developed to help people organize complex information, preserve case context, and prepare for human-controlled decisions.</p>
+              <p class="product-detail">The synthetic demonstration keeps source evidence visible, places AI-generated proposals behind explicit human review, and preserves provenance into accepted case state and downstream outputs.</p>
+              <a class="button button-secondary" href="https://youtu.be/LqU7pvqd4n4" target="_blank" rel="noreferrer">Watch Case Navigator demo <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="case-gallery-wrap">
+              <p class="case-gallery-label">Prototype views · scroll to explore →</p>
+              <div class="case-gallery" aria-label="Case Navigator prototype screenshots">
+                <figure class="case-proof-card">
+                  <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/openai-proposal-unreviewed.png" alt="Case Navigator showing an AI-generated proposal awaiting human review" loading="lazy">
+                  <figcaption><strong>Proposal before authority</strong>AI-generated candidates remain unreviewed until a person acts.</figcaption>
+                </figure>
+                <figure class="case-proof-card">
+                  <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/accepted-case-timeline.png" alt="Case Navigator accepted case timeline" loading="lazy">
+                  <figcaption><strong>Accepted state over time</strong>Only reviewed, accepted statements enter the case timeline.</figcaption>
+                </figure>
+                <figure class="case-proof-card">
+                  <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/statement-provenance.png" alt="Case Navigator statement provenance view" loading="lazy">
+                  <figcaption><strong>Traceable provenance</strong>Accepted statements remain connected to source evidence and review decisions.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
