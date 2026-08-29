@@ -398,6 +398,26 @@ h3 {
   content: "→";
 }
 
+.process-return {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+  margin: 0.65rem 0 0;
+  color: #85adff;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.process-return::before {
+  width: 3.5rem;
+  height: 1px;
+  background: rgba(133, 173, 255, 0.5);
+  content: "";
+}
+
 .emerging-lane {
   align-items: center;
 }
