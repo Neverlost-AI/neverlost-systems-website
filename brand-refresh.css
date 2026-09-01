@@ -9,6 +9,15 @@
   box-shadow: 0 8px 28px rgba(4, 26, 51, 0.16);
 }
 
+body:not(.labs-page) .site-header {
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+body:not(.labs-page) .site-header.is-scroll-hidden {
+  transform: translateY(calc(-100% - 1px));
+}
+
 .nav-wrap {
   min-height: 84px;
 }
@@ -170,5 +179,11 @@ main > .section::after {
   main > .section::after {
     width: 36px;
     height: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:not(.labs-page) .site-header {
+    transition: none;
   }
 }

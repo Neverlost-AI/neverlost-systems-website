@@ -1,24 +1,31 @@
 const navToggle = document.querySelector('.nav-toggle');
 const primaryNav = document.querySelector('.primary-nav');
+const siteHeader = document.querySelector('.site-header');
 const year = document.querySelector('#year');
 const brandMark = document.querySelector('.brand-mark');
-const contactOpen = document.querySelector('a[href="mailto:neverlostsells@gmail.com"]');
+const contactOpens = document.querySelectorAll('[data-contact-open], a[href="mailto:neverlostsells@gmail.com"]');
+const runtimeScript = document.currentScript;
+const siteBaseUrl = new URL('.', runtimeScript?.src || window.location.href);
 
-const brandStylesheet = document.createElement('link');
-brandStylesheet.rel = 'stylesheet';
-brandStylesheet.href = 'brand-refresh.css';
-document.head.appendChild(brandStylesheet);
+if (!document.querySelector('link[href$="brand-refresh.css"]')) {
+  const brandStylesheet = document.createElement('link');
+  brandStylesheet.rel = 'stylesheet';
+  brandStylesheet.href = new URL('brand-refresh.css', siteBaseUrl).href;
+  document.head.appendChild(brandStylesheet);
+}
 
-const favicon = document.createElement('link');
-favicon.rel = 'icon';
-favicon.type = 'image/svg+xml';
-favicon.href = 'assets/nvlt-official-logo.svg';
-document.head.appendChild(favicon);
+if (!document.querySelector('link[rel~="icon"]')) {
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/svg+xml';
+  favicon.href = new URL('assets/nvlt-official-logo.svg', siteBaseUrl).href;
+  document.head.appendChild(favicon);
+}
 
 if (brandMark) {
   const logo = document.createElement('img');
   logo.className = 'brand-logo';
-  logo.src = 'assets/nvlt-official-logo.svg';
+  logo.src = new URL('assets/nvlt-official-logo.svg', siteBaseUrl).href;
   logo.alt = '';
   logo.setAttribute('aria-hidden', 'true');
   brandMark.replaceWith(logo);
@@ -40,6 +47,46 @@ if (navToggle && primaryNav) {
       navToggle.setAttribute('aria-expanded', 'false');
     }
   });
+}
+
+if (siteHeader) {
+  const topThreshold = 8;
+  const directionThreshold = 12;
+  let lastScrollY = Math.max(window.scrollY, 0);
+  let scrollTicking = false;
+
+  const revealHeader = () => siteHeader.classList.remove('is-scroll-hidden');
+
+  const updateHeaderVisibility = () => {
+    const currentScrollY = Math.max(window.scrollY, 0);
+    const scrollDelta = currentScrollY - lastScrollY;
+
+    if (currentScrollY <= topThreshold) {
+      revealHeader();
+      lastScrollY = currentScrollY;
+    } else if (Math.abs(scrollDelta) >= directionThreshold) {
+      const menuIsOpen = primaryNav?.classList.contains('is-open');
+
+      if (scrollDelta > 0 && !menuIsOpen) {
+        siteHeader.classList.add('is-scroll-hidden');
+      } else if (scrollDelta < 0) {
+        revealHeader();
+      }
+
+      lastScrollY = currentScrollY;
+    }
+
+    scrollTicking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(updateHeaderVisibility);
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  siteHeader.addEventListener('focusin', revealHeader);
 }
 
 const caseScreenshots = Array.from(document.querySelectorAll('.case-proof-card img'));
@@ -256,7 +303,35 @@ if (caseScreenshots.length) {
   });
 }
 
-if (contactOpen) {
+if (contactOpens.length) {
+  const isLabsInquiry = document.body.dataset.contactContext === 'labs';
+  const contactEyebrow = isLabsInquiry ? 'Contact Neverlost Labs' : 'Contact Neverlost Systems';
+  const contactTitle = isLabsInquiry ? 'Start a project.' : 'Start a focused conversation.';
+  const contactIntro = isLabsInquiry
+    ? 'Tell us what is fragmented, repetitive, difficult to scale, or taking too much human attention.'
+    : 'Tell us a little about what you’re working on and why you’re reaching out.';
+  const contactSubject = isLabsInquiry
+    ? 'New Neverlost Labs project inquiry'
+    : 'New Neverlost Systems website inquiry';
+  const contactNext = isLabsInquiry
+    ? 'https://neverlostsystems.com/labs/?sent=1#labs-contact'
+    : 'https://neverlostsystems.com/?sent=1#partnerships';
+  const contactOptions = isLabsInquiry
+    ? `
+            <option>AI automation</option>
+            <option>AI agents</option>
+            <option>Custom software</option>
+            <option>Systems integration</option>
+            <option>Healthcare systems</option>
+            <option>Other</option>`
+    : `
+            <option>Research collaboration</option>
+            <option>Pilot partnership</option>
+            <option>Technical collaboration</option>
+            <option>Funding or strategic partnership</option>
+            <option>Patient advocacy inquiry</option>
+            <option>Other</option>`;
+  const contactSubmitLabel = isLabsInquiry ? 'Send project inquiry' : 'Send message';
   const modalStyles = document.createElement('style');
   modalStyles.textContent = `
     .contact-dialog {
@@ -357,13 +432,13 @@ if (contactOpen) {
   contactDialog.innerHTML = `
     <div class="contact-dialog-inner">
       <button class="contact-dialog-close" type="button" aria-label="Close contact form">×</button>
-      <p class="eyebrow">Contact Neverlost Systems</p>
-      <h2 id="contact-dialog-title">Start a focused conversation.</h2>
-      <p class="contact-dialog-intro">Tell us a little about what you’re working on and why you’re reaching out.</p>
+      <p class="eyebrow">${contactEyebrow}</p>
+      <h2 id="contact-dialog-title">${contactTitle}</h2>
+      <p class="contact-dialog-intro">${contactIntro}</p>
       <form class="contact-form" action="https://formsubmit.co/neverlostsells@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New Neverlost Systems website inquiry">
+        <input type="hidden" name="_subject" value="${contactSubject}">
         <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://neverlostsystems.com/?sent=1#partnerships">
+        <input type="hidden" name="_next" value="${contactNext}">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <div class="contact-form-row">
           <label>Name
@@ -379,18 +454,13 @@ if (contactOpen) {
         <label>Reason for reaching out
           <select name="reason" required>
             <option value="" selected disabled>Select a topic</option>
-            <option>Research collaboration</option>
-            <option>Pilot partnership</option>
-            <option>Technical collaboration</option>
-            <option>Funding or strategic partnership</option>
-            <option>Patient advocacy inquiry</option>
-            <option>Other</option>
+            ${contactOptions}
           </select>
         </label>
         <label>Message
           <textarea name="message" required></textarea>
         </label>
-        <button class="button button-primary" type="submit">Send message</button>
+        <button class="button button-primary" type="submit">${contactSubmitLabel}</button>
         <p class="contact-form-note">Please do not submit sensitive medical, legal, financial, or other private records through this form.</p>
       </form>
     </div>
@@ -399,9 +469,11 @@ if (contactOpen) {
 
   const contactClose = contactDialog.querySelector('.contact-dialog-close');
 
-  contactOpen.addEventListener('click', (event) => {
-    event.preventDefault();
-    contactDialog.showModal();
+  contactOpens.forEach((contactOpen) => {
+    contactOpen.addEventListener('click', (event) => {
+      event.preventDefault();
+      contactDialog.showModal();
+    });
   });
 
   contactClose.addEventListener('click', () => contactDialog.close());
