@@ -49,6 +49,46 @@ if (navToggle && primaryNav) {
   });
 }
 
+document.addEventListener('click', (event) => {
+  const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+  if (!link || typeof window.gtag !== 'function') return;
+
+  let destination;
+  try {
+    destination = new URL(link.getAttribute('href'), window.location.href);
+  } catch (_) {
+    return;
+  }
+
+  if (destination.origin !== window.location.origin) return;
+
+  const current = new URL(window.location.href);
+  const sameDocumentHash =
+    destination.pathname === current.pathname &&
+    destination.search === current.search &&
+    Boolean(destination.hash);
+  const pageNavigation =
+    destination.pathname !== current.pathname ||
+    destination.search !== current.search;
+
+  if (!sameDocumentHash && !pageNavigation) return;
+
+  const linkText = link.textContent.replace(/\s+/g, ' ').trim().slice(0, 100);
+  const navigationArea = link.closest('.primary-nav')
+    ? 'primary_nav'
+    : link.closest('.hero-actions')
+      ? 'hero'
+      : 'content';
+
+  window.gtag('event', 'internal_navigation', {
+    link_text: linkText,
+    link_url: destination.href,
+    destination_path: `${destination.pathname}${destination.search}${destination.hash}`,
+    destination_section: destination.hash ? destination.hash.slice(1) : 'page',
+    navigation_area: navigationArea
+  });
+});
+
 if (siteHeader) {
   const topThreshold = 8;
   const directionThreshold = 12;
