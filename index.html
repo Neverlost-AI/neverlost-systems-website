@@ -21,103 +21,26 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     #products .product-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    #products .product-card-foundation {
-      min-height: auto;
+    #products .product-card {
+      min-height: 0;
     }
 
-    .case-feature {
-      display: grid;
-      grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
-      overflow: hidden;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    #products .product-card .button {
+      margin-top: 1rem;
+      margin-right: 0.5rem;
     }
 
-    .case-feature-copy {
-      padding: 2rem;
+    #work .project-grid {
+      max-width: 760px;
+      grid-template-columns: minmax(0, 1fr);
     }
 
-    .case-feature-copy > p:not(.product-status) {
-      color: var(--text-muted);
-    }
-
-    .case-feature-copy .button {
-      margin-top: 0.35rem;
-    }
-
-    .case-gallery-wrap {
-      min-width: 0;
-      padding: 1.25rem 0 1.25rem 1.25rem;
-      background: var(--surface-muted);
-      border-left: 1px solid var(--line);
-    }
-
-    .case-gallery-label {
-      margin: 0 1.25rem 0.75rem 0;
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .case-gallery {
-      display: flex;
-      gap: 0.9rem;
-      overflow-x: auto;
-      padding: 0 1.25rem 0.55rem 0;
-      scroll-snap-type: x proximity;
-      scrollbar-width: thin;
-    }
-
-    .case-proof-card {
-      flex: 0 0 min(360px, 78vw);
-      margin: 0;
-      overflow: hidden;
-      scroll-snap-align: start;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-    }
-
-    .case-proof-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      object-position: top left;
-      background: #fff;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .case-proof-card figcaption {
-      padding: 0.85rem 1rem 1rem;
-      color: var(--text-muted);
-      font-size: 0.84rem;
-      line-height: 1.45;
-    }
-
-    .case-proof-card strong {
-      display: block;
-      margin-bottom: 0.25rem;
-      color: var(--text);
-      font-family: "Manrope", system-ui, sans-serif;
-      font-size: 0.92rem;
-    }
-
-    @media (max-width: 900px) {
-      .case-feature {
+    @media (max-width: 760px) {
+      #products .product-grid {
         grid-template-columns: 1fr;
-      }
-
-      .case-gallery-wrap {
-        border-top: 1px solid var(--line);
-        border-left: 0;
       }
     }
   </style>
@@ -135,7 +58,6 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
       <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
         <a href="#products">Products</a>
-        <a href="labs/">Labs</a>
         <a href="#approach">How we build</a>
         <a href="#advocacy">Patient advocacy</a>
         <a href="#stage">Current stage</a>
@@ -214,48 +136,33 @@
     <section id="products" class="section">
       <div class="container">
         <p class="eyebrow">Product family</p>
-        <h2>One approach, developed across distinct applications.</h2>
-        <p class="section-lede">Each Neverlost product applies the same core idea—preserve important context and carry it forward—to a specific environment. Capabilities are at different stages of development.</p>
+        <h2>One system, expressed through three focused applications.</h2>
+        <p class="section-lede">Neverlost is being developed as a coordinated set of applications for preserving context, analyzing evidence, and keeping consequential decisions under human control.</p>
         <div class="product-grid">
           <article class="product-card product-card-foundation">
-            <p class="product-status">Research &amp; development foundation</p>
+            <p class="product-status">Shared foundation</p>
             <h3>Neverlost OS</h3>
-            <p>The underlying systems architecture behind Neverlost applications, designed to preserve source context, distinguish AI-generated proposals from reviewed and accepted information, verify outcomes, and carry trusted context forward without losing how a decision was reached.</p>
+            <p>The shared foundation that preserves case state, source context, authority, provenance, and history across Neverlost applications.</p>
           </article>
 
-          <div style="max-width:900px;padding:.5rem 0 .25rem;">
-            <h3>Patient advocacy and longitudinal case management</h3>
-            <p class="section-lede">Neverlost Systems is developing an AI-assisted patient advocacy and longitudinal case-management system for people navigating fragmented healthcare, disability, and benefits processes.</p>
-            <p class="section-lede">Existing prototypes focus on preserving source-linked context, identifying unresolved issues, organizing longitudinal records, and supporting human review before information is turned into decisions or next actions.</p>
-          </div>
+          <article class="product-card">
+            <p class="product-status">Working prototype</p>
+            <h3>Neverlost Command Center</h3>
+            <p>A coordination workspace for capturing updates, organizing workstreams, tracking what needs attention, and carrying current case context forward.</p>
+          </article>
 
-          <article class="case-feature">
-            <div class="case-feature-copy">
-              <p class="product-status">Working prototype</p>
-              <h3>Case Navigator</h3>
-              <p>A healthcare and disability navigation application being developed to help people organize complex information, preserve case context, and prepare for human-controlled decisions.</p>
-              <p class="product-detail">The synthetic demonstration keeps source evidence visible, keeps AI-generated suggestions separate until a person reviews them, and connects reviewed information back to the evidence it came from.</p>
-              <a class="button button-primary" href="https://neverlost-case-navigator.vercel.app/" target="_blank" rel="noreferrer">Open synthetic demo <span aria-hidden="true">↗</span></a>
-              <a class="button button-secondary" href="https://youtu.be/LqU7pvqd4n4" target="_blank" rel="noreferrer">Watch Case Navigator demo <span aria-hidden="true">↗</span></a>
-            </div>
+          <article class="product-card">
+            <p class="product-status">Working prototype</p>
+            <h3>Neverlost V1.1 — Evidence Analysis</h3>
+            <p>An evidence-analysis workspace that organizes source-linked records and surfaces patterns, capacity themes, denials, bottlenecks, and unresolved gaps for human review.</p>
+          </article>
 
-            <div class="case-gallery-wrap">
-              <p class="case-gallery-label">Prototype views · scroll to explore →</p>
-              <div class="case-gallery" aria-label="Case Navigator prototype screenshots">
-                <figure class="case-proof-card">
-                  <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/openai-proposal-unreviewed.png" alt="Case Navigator showing an AI-generated proposal awaiting human review" loading="lazy">
-                  <figcaption><strong>AI suggestion awaiting review</strong>AI-generated suggestions stay separate until a person reviews them.</figcaption>
-                </figure>
-                <figure class="case-proof-card">
-                  <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/accepted-case-timeline.png" alt="Case Navigator accepted case timeline" loading="lazy">
-                  <figcaption><strong>Reviewed timeline</strong>Only information a person has reviewed and accepted enters the case timeline.</figcaption>
-                </figure>
-                <figure class="case-proof-card">
-                  <img src="https://raw.githubusercontent.com/Neverlost-AI/neverlost-case-navigator/main/docs/screenshots/statement-provenance.png" alt="Case Navigator statement provenance view" loading="lazy">
-                  <figcaption><strong>Connected to the source</strong>Reviewed information stays connected to the evidence and decision it came from.</figcaption>
-                </figure>
-              </div>
-            </div>
+          <article class="product-card">
+            <p class="product-status">Working prototype · Synthetic demo</p>
+            <h3>Neverlost Case Navigator</h3>
+            <p>A human-review workspace where proposed findings are accepted, edited, rejected, or held before reviewed information becomes part of the case or a controlled output.</p>
+            <a class="button button-primary" href="https://neverlost-case-navigator.vercel.app/" target="_blank" rel="noreferrer">Open synthetic demo <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://youtu.be/LqU7pvqd4n4" target="_blank" rel="noreferrer">Watch demo <span aria-hidden="true">↗</span></a>
           </article>
         </div>
       </div>
@@ -297,26 +204,14 @@
     <section id="work" class="section section-muted">
       <div class="container">
         <p class="eyebrow">Public work</p>
-        <h2>Working demonstrations of the Neverlost approach.</h2>
-        <p class="section-lede">These public materials show different parts of the systems approach through working prototypes and frameworks. They are demonstrations, not finished clinical, legal, or educational products.</p>
+        <h2>The Full Human Pathway</h2>
+        <p class="section-lede">A healthcare-centered framework for thinking about how one person's needs move across systems that rarely operate as one coordinated whole.</p>
         <div class="project-grid">
           <article class="project-card">
-            <div class="project-type">Prototype</div>
-            <h3>The Full Human Pathway</h3>
-            <p>A working demonstration of keeping evidence connected to its source, adapting work to available capacity, checking outputs before they move forward, and requiring explicit human review.</p>
-            <a href="https://youtu.be/5DefEcMeJ6w" target="_blank" rel="noreferrer">Watch the demonstration <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="project-card">
-            <div class="project-type">Framework</div>
+            <div class="project-type">Healthcare framework</div>
             <h3>The Full Human Pathway: One Person, Six Systems, One Coherent Path</h3>
             <p>A model connecting medical stabilization, practical support, vocational rehabilitation, education, and meaningful long-term work.</p>
             <a href="https://youtu.be/7zIodESXarQ" target="_blank" rel="noreferrer">View the pathway <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="project-card">
-            <div class="project-type">Prototype</div>
-            <h3>Capacity-Aware Publishing</h3>
-            <p>A recovery-aware publishing workflow that turns approved source material into validated media packages while keeping final release decisions with a person.</p>
-            <a href="https://youtu.be/nQpAkjY9roA" target="_blank" rel="noreferrer">Watch the demonstration <span aria-hidden="true">↗</span></a>
           </article>
         </div>
       </div>
@@ -329,12 +224,12 @@
           <h2>Beyond the initial concept. Still early.</h2>
         </div>
         <div class="stage-panel">
-          <p>Neverlost Systems has a founder-built technical foundation and multiple prototypes and applications under development.</p>
+          <p>Neverlost Systems has a founder-built technical foundation and three application prototypes under active development.</p>
           <ul class="stage-list">
-            <li><strong>Codex Capacity Governor</strong> — an AI development workflow that adapts work to available capacity and keeps review and approval explicit</li>
-            <li><strong>Neverlost Command Center</strong> — a coordination workspace for preserving current context, decisions, and next actions over time</li>
-            <li>Preparing for pilots and research relationships</li>
-            <li>Continuing validation of the systems approach</li>
+            <li><strong>Neverlost Command Center</strong> — coordination and current-context workspace</li>
+            <li><strong>Neverlost V1.1</strong> — source-linked evidence analysis and longitudinal organization</li>
+            <li><strong>Neverlost Case Navigator</strong> — human review and controlled outputs, with a public synthetic demonstration</li>
+            <li>Preparing for pilots, research relationships, and continued commercialization validation</li>
           </ul>
         </div>
       </div>
