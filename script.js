@@ -11,12 +11,15 @@
   const sectionNames = {
     top: 'Home / Hero',
     why: 'Why Neverlost',
+    focus: 'Initial Market',
     'why-ai': 'Why AI',
     products: 'Product Family',
     approach: 'How We Build',
-    advocacy: 'Patient Advocacy',
+    advocacy: 'Patient Advocacy and Care Navigation',
     work: 'Public Work',
     stage: 'Current Stage',
+    validation: 'Customer Discovery',
+    about: 'About',
     partnerships: 'Partnerships'
   };
 
