@@ -346,32 +346,48 @@ if (caseScreenshots.length) {
 if (contactOpens.length) {
   const isLabsInquiry = document.body.dataset.contactContext === 'labs';
   const contactEyebrow = isLabsInquiry ? 'Contact Neverlost Labs' : 'Contact Neverlost Systems';
-  const contactTitle = isLabsInquiry ? 'Start a project.' : 'Start a focused conversation.';
+  const contactTitle = isLabsInquiry ? 'Start a project.' : 'Tell us your story.';
   const contactIntro = isLabsInquiry
     ? 'Tell us what is fragmented, repetitive, difficult to scale, or taking too much human attention.'
-    : 'Tell us a little about what you’re working on and why you’re reaching out.';
+    : 'If you’ve had to repeat your health history, keep track of scattered information, or walk into appointments worried that something important will be missed, we want to hear what that experience has been like.';
   const contactSubject = isLabsInquiry
     ? 'New Neverlost Labs project inquiry'
-    : 'New Neverlost Systems website inquiry';
+    : 'New Neverlost patient story';
   const contactNext = isLabsInquiry
     ? 'https://neverlostsystems.com/labs/?sent=1#labs-contact'
-    : 'https://neverlostsystems.com/?sent=1#partnerships';
-  const contactOptions = isLabsInquiry
+    : 'https://neverlostsystems.com/?sent=1#contact';
+  const contactFields = isLabsInquiry
     ? `
+        <label>Organization <span style="font-weight:500;color:var(--text-muted);">(optional)</span>
+          <input type="text" name="organization" autocomplete="organization">
+        </label>
+        <label>Reason for reaching out
+          <select name="reason" required>
+            <option value="" selected disabled>Select a topic</option>
             <option>AI automation</option>
             <option>AI agents</option>
             <option>Custom software</option>
             <option>Systems integration</option>
             <option>Healthcare systems</option>
-            <option>Other</option>`
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Message
+          <textarea name="message" required></textarea>
+        </label>`
     : `
-            <option>Research collaboration</option>
-            <option>Pilot partnership</option>
-            <option>Technical collaboration</option>
-            <option>Funding or strategic partnership</option>
-            <option>Patient advocacy inquiry</option>
-            <option>Other</option>`;
-  const contactSubmitLabel = isLabsInquiry ? 'Send project inquiry' : 'Send message';
+        <label>Tell us your story
+          <textarea name="story" placeholder="What has been hardest to keep track of, explain, or carry from one appointment to the next?" required></textarea>
+        </label>
+        <label>Would you be open to a conversation?
+          <select name="open_to_conversation" required>
+            <option value="" selected disabled>Select an option</option>
+            <option value="yes">Yes, I’d be open to talking</option>
+            <option value="maybe">Maybe later</option>
+            <option value="no">No, I’m just sharing my story</option>
+          </select>
+        </label>`;
+  const contactSubmitLabel = isLabsInquiry ? 'Send project inquiry' : 'Share your story';
   const modalStyles = document.createElement('style');
   modalStyles.textContent = `
     .contact-dialog {
@@ -488,18 +504,7 @@ if (contactOpens.length) {
             <input type="email" name="email" autocomplete="email" required>
           </label>
         </div>
-        <label>Organization <span style="font-weight:500;color:var(--text-muted);">(optional)</span>
-          <input type="text" name="organization" autocomplete="organization">
-        </label>
-        <label>Reason for reaching out
-          <select name="reason" required>
-            <option value="" selected disabled>Select a topic</option>
-            ${contactOptions}
-          </select>
-        </label>
-        <label>Message
-          <textarea name="message" required></textarea>
-        </label>
+        ${contactFields}
         <button class="button button-primary" type="submit">${contactSubmitLabel}</button>
         <p class="contact-form-note">Please do not submit sensitive medical, legal, financial, or other private records through this form.</p>
       </form>
