@@ -10,17 +10,14 @@
 
   const sectionNames = {
     top: 'Home / Hero',
-    why: 'Why Neverlost',
-    focus: 'Initial Market',
-    'why-ai': 'Why AI',
-    products: 'Product Family',
-    approach: 'How We Build',
-    advocacy: 'Patient Advocacy and Care Navigation',
-    work: 'Public Work',
-    stage: 'Current Stage',
-    validation: 'Customer Discovery',
-    about: 'About',
-    partnerships: 'Partnerships'
+    'encounter-problem': 'Two Perspectives / Encounter Problem',
+    'how-it-works': 'How It Works',
+    advocacy: 'Patient Advocacy',
+    roles: 'Clear Roles',
+    'live-demos': 'Live Software',
+    learning: 'What We Are Learning',
+    about: 'Why I Built Neverlost',
+    contact: 'Contact'
   };
 
   const sections = Object.keys(sectionNames)
