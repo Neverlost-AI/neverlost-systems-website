@@ -90,10 +90,6 @@
       letter-spacing: -0.045em;
     }
 
-    #how-it-works .problem-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
     #live-demos .product-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -142,7 +138,6 @@
 
     @media (max-width: 900px) {
       .perspective-grid,
-      #how-it-works .problem-grid,
       #live-demos .product-grid {
         grid-template-columns: 1fr;
       }
@@ -162,7 +157,6 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
       <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
         <a href="#live-demos">Apps</a>
-        <a href="#how-it-works">How It Works</a>
         <a href="#advocacy">Patient Advocacy</a>
         <a href="#learning">What We're Learning</a>
         <a href="#about">About</a>
@@ -235,35 +229,6 @@
         </div>
 
         <p class="boundary-note">These are early-stage applications and technical demonstrations, not production clinical systems or substitutes for professional care.</p>
-      </div>
-    </section>
-
-    <section id="how-it-works" class="section">
-      <div class="container">
-        <p class="eyebrow">How it works</p>
-        <h2>The story should get more useful over time, not start over.</h2>
-        <p class="section-lede">A health story is more than one appointment, one diagnosis, or one medical note.</p>
-        <p>What happened matters. What changed afterward matters. What has already been tried matters. What is still unresolved matters. And where that information came from matters.</p>
-        <p>Neverlost is being built so each new encounter can begin from what has already been learned instead of repeatedly rebuilding the same history.</p>
-
-        <div class="problem-grid">
-          <article>
-            <h3>Carry the context forward</h3>
-            <p>Keep the history, evidence, changes, decisions, and unresolved questions connected as the story develops.</p>
-          </article>
-          <article>
-            <h3>Prepare for the visit</h3>
-            <p>The whole story does not need to become the focus of every appointment. Neverlost helps prepare the part that matters now while keeping the larger context behind it.</p>
-          </article>
-          <article>
-            <h3>Keep the evidence connected</h3>
-            <p>Important information should remain connected to where it came from so the patient, advocate, or provider can go deeper when necessary.</p>
-          </article>
-          <article>
-            <h3>Preserve what happens next</h3>
-            <p>What was learned, decided, changed, or left unresolved becomes part of the continuing story instead of disappearing after the appointment.</p>
-          </article>
-        </div>
       </div>
     </section>
 
