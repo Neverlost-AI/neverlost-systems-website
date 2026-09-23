@@ -90,21 +90,6 @@
       letter-spacing: -0.045em;
     }
 
-    #live-demos .product-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    #live-demos .product-card {
-      display: flex;
-      min-height: 0;
-      flex-direction: column;
-    }
-
-    #live-demos .product-card .button {
-      margin-top: auto;
-      margin-right: 0.5rem;
-    }
-
     .role-callout {
       margin-top: 2.25rem;
       padding: 1.5rem;
@@ -133,8 +118,7 @@
     }
 
     @media (max-width: 900px) {
-      .perspective-grid,
-      #live-demos .product-grid {
+      .perspective-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -191,7 +175,7 @@
         <p class="visit-line">All in a 20-minute visit.</p>
         <p class="section-lede">That can create pain on both sides.</p>
         <p><strong>Neither side is the problem.</strong></p>
-        <p class="section-lede"><strong>Neverlost is built to carry the larger story forward, prepare what matters for the encounter in front of them, and keep the deeper context available when it is needed.</strong></p>
+        <p class="section-lede encounter-summary"><strong>Neverlost is built to carry the larger story forward, prepare what matters for the encounter in front of them, and keep the deeper context available when it is needed.</strong></p>
       </div>
     </section>
 
@@ -202,19 +186,33 @@
         <p class="section-lede">The larger idea matters more when you can see part of it working.</p>
 
         <div class="product-grid">
+          <article class="product-card product-feature">
+            <div class="product-feature-heading">
+              <h3>Full Human Pathway</h3>
+              <p class="product-feature-tagline">The whole person. A clearer next step.</p>
+            </div>
+            <div class="product-feature-content">
+              <p>Full Human Pathway shows how scattered information can become a coordinated view of health, daily life, work, and support.</p>
+              <p>Explore a fictional case to see what can be prepared now, what still needs clarification, and who needs to review the next decision.</p>
+              <a class="button button-primary" href="https://neverlost-full-human-pathway.vercel.app/" target="_blank" rel="noreferrer">See how it works <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
           <article class="product-card">
             <p class="product-status">Live application</p>
             <h3>Neverlost V2</h3>
-            <p><strong>Evidence analysis with the larger story still attached.</strong></p>
-            <p>Neverlost V2 brings source-linked evidence into a live analysis workflow where information can be organized, prioritized, reviewed, and synthesized without throwing away where it came from.</p>
+            <p><strong>See the evidence without losing the bigger picture.</strong></p>
+            <p>Neverlost V2 brings source-linked information into one live workspace so important details can be organized, compared, and reviewed in context.</p>
+            <p>It helps turn scattered records into a clearer view of what the evidence supports, what still needs attention, and how each conclusion connects back to its source.</p>
             <a class="button button-primary" href="https://neverlost-v1-portfolio.vercel.app/v2" target="_blank" rel="noreferrer">Open Neverlost V2 <span aria-hidden="true">↗</span></a>
           </article>
 
           <article class="product-card">
             <p class="product-status">Live synthetic demo</p>
             <h3>Case Navigator</h3>
-            <p><strong>AI proposes. Human decides.</strong></p>
-            <p>Case Navigator explores the review side of the system. AI can propose structured findings, but a person can accept, edit, reject, or hold them before reviewed information becomes part of the case.</p>
+            <p><strong>AI can surface the answer. A person still decides what counts.</strong></p>
+            <p>Case Navigator turns AI-generated findings into a reviewable workflow instead of treating them as final.</p>
+            <p>A person can accept, edit, reject, or hold each finding before it becomes part of the case, keeping human judgment in control of what moves forward.</p>
             <a class="button button-primary" href="https://neverlost-case-navigator.vercel.app/" target="_blank" rel="noreferrer">Open Case Navigator <span aria-hidden="true">↗</span></a>
           </article>
         </div>

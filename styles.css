@@ -233,6 +233,58 @@ h3 {
   font-size: clamp(1.15rem, 2vw, 1.35rem);
 }
 
+/* Establish the existing message-panel palette at the start of the homepage. */
+#top {
+  background: var(--surface);
+}
+
+#encounter-problem {
+  background: var(--bg);
+}
+
+#top::before,
+#encounter-problem::before {
+  display: none;
+}
+
+#top .hero-copy {
+  min-width: 0;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  color: #fff;
+  background: var(--dark);
+  border-radius: var(--radius);
+}
+
+#top .eyebrow {
+  color: #85adff;
+}
+
+#top h1 {
+  font-size: clamp(2.5rem, 6vw, 5.65rem);
+}
+
+#top .hero-secondary,
+#top .hero-lede {
+  color: #fff;
+}
+
+#top .hero-lede {
+  margin-bottom: 0;
+}
+
+#encounter-problem .encounter-summary {
+  max-width: 800px;
+  margin: 2rem 0 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  color: #fff;
+  background: var(--dark);
+  border-radius: var(--radius);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -260,6 +312,21 @@ h3 {
 .button-primary:hover,
 .button-primary:focus-visible {
   background: var(--brand-dark);
+}
+
+#live-demos .button-primary {
+  color: #fff;
+  background: var(--dark);
+}
+
+#live-demos .button-primary:hover,
+#live-demos .button-primary:focus-visible {
+  background: var(--dark-soft);
+}
+
+#live-demos .button-primary:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
 }
 
 .button-secondary {
@@ -351,6 +418,103 @@ h3 {
 
 .product-card > p:not(.product-status) {
   color: var(--text-muted);
+}
+
+#live-demos {
+  background: var(--bg);
+}
+
+#live-demos::before {
+  display: none;
+}
+
+#live-demos .product-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+#live-demos .product-card {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+}
+
+#live-demos .product-card .button {
+  margin-top: auto;
+  gap: 0.4rem;
+}
+
+#live-demos .product-feature {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  padding: 0;
+  overflow: hidden;
+  border-color: var(--dark);
+}
+
+.product-feature-heading,
+.product-feature-content {
+  min-width: 0;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+.product-feature-heading {
+  color: #fff;
+  background: var(--dark);
+}
+
+.product-feature-heading h3 {
+  margin-bottom: 1.5rem;
+  color: #85adff;
+  font-size: 1.4rem;
+}
+
+.product-feature-tagline {
+  max-width: 16ch;
+  margin-bottom: 0;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.product-feature-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.product-feature-content p {
+  max-width: 52ch;
+}
+
+.product-feature-content p:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  #live-demos .product-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .product-feature-tagline {
+    max-width: 24ch;
+  }
+}
+
+@media (max-width: 640px) {
+  #live-demos .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-feature-content .button {
+    width: 100%;
+  }
 }
 
 .product-card-foundation > p:not(.product-status) {
