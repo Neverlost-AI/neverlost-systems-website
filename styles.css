@@ -247,25 +247,14 @@ h3 {
   display: none;
 }
 
-#top .hero-copy {
-  min-width: 0;
-  padding: clamp(1.5rem, 4vw, 3.5rem);
+#top h1 {
+  width: fit-content;
+  max-width: min(100%, 900px);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
   color: #fff;
   background: var(--dark);
   border-radius: var(--radius);
-}
-
-#top .eyebrow {
-  color: #85adff;
-}
-
-#top h1 {
-  font-size: clamp(2.5rem, 6vw, 5.65rem);
-}
-
-#top .hero-secondary,
-#top .hero-lede {
-  color: #fff;
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
 }
 
 #top .hero-lede {
@@ -449,33 +438,32 @@ h3 {
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  padding: 0;
-  overflow: hidden;
-  border-color: var(--dark);
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  padding: clamp(1.5rem, 3.5vw, 3rem);
 }
 
 .product-feature-heading,
 .product-feature-content {
   min-width: 0;
-  padding: clamp(1.5rem, 3.5vw, 3rem);
-}
-
-.product-feature-heading {
-  color: #fff;
-  background: var(--dark);
 }
 
 .product-feature-heading h3 {
-  margin-bottom: 1.5rem;
-  color: #85adff;
+  margin-bottom: 1.25rem;
+  color: var(--text);
   font-size: 1.4rem;
 }
 
 .product-feature-tagline {
-  max-width: 16ch;
+  display: inline-block;
+  width: fit-content;
+  max-width: min(100%, 22ch);
   margin-bottom: 0;
+  padding: clamp(1.15rem, 2vw, 1.5rem);
+  color: #fff;
+  background: var(--dark);
+  border-radius: var(--radius);
   font-family: "Manrope", system-ui, sans-serif;
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.04em;
@@ -500,10 +488,6 @@ h3 {
 @media (max-width: 900px) {
   #live-demos .product-feature {
     grid-template-columns: 1fr;
-  }
-
-  .product-feature-tagline {
-    max-width: 24ch;
   }
 }
 
