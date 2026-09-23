@@ -242,6 +242,25 @@ h3 {
   background: var(--bg);
 }
 
+#encounter-problem .eyebrow,
+#encounter-problem h2,
+#encounter-problem .section-lede:not(.encounter-summary) {
+  text-align: center;
+}
+
+#encounter-problem h2 {
+  margin-inline: auto;
+}
+
+#encounter-problem .perspective-grid {
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+#encounter-problem .section-lede:not(.encounter-summary) {
+  margin-bottom: 0;
+}
+
 #top::before,
 #encounter-problem::before {
   display: none;
@@ -263,7 +282,7 @@ h3 {
 
 #encounter-problem .encounter-summary {
   max-width: 800px;
-  margin: 2rem 0 0 auto;
+  margin: 1rem auto 0;
   padding: clamp(1.5rem, 3vw, 2.5rem);
   color: #fff;
   background: var(--dark);
@@ -272,6 +291,7 @@ h3 {
   font-size: clamp(1.25rem, 2.2vw, 1.75rem);
   line-height: 1.4;
   letter-spacing: -0.02em;
+  text-align: left;
 }
 
 .hero-actions {
