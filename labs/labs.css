@@ -75,10 +75,6 @@
   color: var(--labs-ivory);
 }
 
-.labs-page .primary-nav .labs-parent-link {
-  color: #8db7ff;
-}
-
 .labs-page .nav-toggle {
   color: var(--labs-ivory);
   background: var(--labs-charcoal-soft);
@@ -498,7 +494,7 @@
 
 .labs-footer-link {
   flex: 0 0 auto;
-  color: var(--labs-ivory);
+  color: #8db7ff;
   font-weight: 700;
   text-decoration: none;
 }

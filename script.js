@@ -66,9 +66,17 @@ if (siteHeader) {
       lastScrollY = currentScrollY;
     } else if (Math.abs(scrollDelta) >= directionThreshold) {
       const menuIsOpen = primaryNav?.classList.contains('is-open');
+      const isLabsPage = document.body.classList.contains('labs-page');
 
-      if (scrollDelta > 0 && !menuIsOpen) {
-        siteHeader.classList.add('is-scroll-hidden');
+      if (scrollDelta > 0) {
+        if (menuIsOpen && isLabsPage) {
+          primaryNav.classList.remove('is-open');
+          navToggle?.setAttribute('aria-expanded', 'false');
+        }
+
+        if (!menuIsOpen || isLabsPage) {
+          siteHeader.classList.add('is-scroll-hidden');
+        }
       } else if (scrollDelta < 0) {
         revealHeader();
       }
