@@ -458,26 +458,35 @@ h3 {
   min-width: 0;
 }
 
-.product-feature-heading h3 {
-  margin-bottom: 1.25rem;
-  color: var(--text);
-  font-size: 1.4rem;
+.product-feature-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.product-feature-tagline {
-  display: inline-block;
-  width: fit-content;
-  max-width: min(100%, 22ch);
-  margin-bottom: 0;
-  padding: clamp(1.15rem, 2vw, 1.5rem);
+.product-feature-heading h3 {
+  max-width: 100%;
+  margin-bottom: 2rem;
+  padding: 0.85rem 1.25rem;
   color: #fff;
   background: var(--dark);
   border-radius: var(--radius);
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.product-feature-tagline {
+  display: block;
+  width: fit-content;
+  max-width: min(100%, 22ch);
+  margin: 0 auto;
+  color: var(--text);
   font-family: "Manrope", system-ui, sans-serif;
   font-size: clamp(1.7rem, 2.6vw, 2.4rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.04em;
+  text-align: center;
 }
 
 .product-feature-content {
@@ -792,6 +801,19 @@ h3 {
   color: var(--text-muted);
 }
 
+.contact-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.contact-card .contact-email-note {
+  max-width: 16rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .site-footer {
   padding: 2rem 0;
   color: var(--text-muted);
@@ -801,6 +823,18 @@ h3 {
 .footer-wrap p {
   margin-bottom: 0;
   font-size: 0.84rem;
+}
+
+.site-footer .footer-wrap {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-wrap .footer-disclaimer {
+  max-width: 90ch;
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 
 @media (max-width: 900px) {
