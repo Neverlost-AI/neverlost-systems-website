@@ -1,0 +1,289 @@
+/* Modest refinements using the existing palette, fonts, and layout system. */
+main > .section::before,
+main > .section::after {
+  display: none;
+}
+
+.section {
+  scroll-margin-top: 6rem;
+}
+
+#top {
+  background: var(--bg);
+}
+
+#top h1 {
+  max-width: 960px;
+  padding: 0;
+  color: var(--text);
+  background: transparent;
+  border-radius: 0;
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+#top .hero-lede {
+  max-width: 760px;
+  margin-bottom: 2rem;
+  line-height: 1.65;
+}
+
+#top .hero-actions {
+  margin-bottom: 0;
+}
+
+#encounter-problem {
+  background: var(--surface);
+}
+
+#encounter-problem .eyebrow,
+#encounter-problem h2,
+#encounter-problem .section-lede:not(.encounter-summary) {
+  text-align: left;
+}
+
+#encounter-problem h2 {
+  margin-inline: 0;
+  max-width: 930px;
+}
+
+#encounter-problem .section-lede {
+  max-width: 78ch;
+}
+
+.comparison-title {
+  margin-top: 2.5rem;
+  font-size: 1.4rem;
+}
+
+#encounter-problem .perspective-grid {
+  max-width: none;
+  margin: 1.4rem 0;
+}
+
+.perspective-card {
+  background: var(--bg);
+  box-shadow: none;
+}
+
+#encounter-problem .encounter-summary {
+  max-width: 78ch;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  color: var(--text-muted);
+  background: transparent;
+  border-radius: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  letter-spacing: normal;
+}
+
+#solution,
+#healthcare {
+  background: var(--bg);
+}
+
+.solution-pillars p {
+  max-width: 34ch;
+}
+
+.outcome-line {
+  margin: 2.75rem 0 0;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.heading-status {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  letter-spacing: normal;
+  line-height: 1.4;
+}
+
+.architecture {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.architecture-apps,
+.architecture-foundation {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.architecture-foundation {
+  border-top: 3px solid var(--brand);
+}
+
+.architecture .card-label {
+  color: var(--brand);
+  font-size: 0.7rem;
+}
+
+.architecture p:last-child {
+  margin-bottom: 0;
+}
+
+.architecture-note,
+.prototype-note,
+.form-note {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.focus-grid,
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 2.5rem 0;
+}
+
+.focus-card,
+.team-card {
+  min-width: 0;
+  padding: 1.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.focus-card p:last-child,
+.team-card p:last-child,
+.team-card h3:last-child {
+  margin-bottom: 0;
+}
+
+.team-card h3 span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+#live-demos {
+  background: var(--surface);
+}
+
+#live-demos .product-card {
+  background: var(--bg);
+}
+
+.prototype-note {
+  margin: 1.5rem 0 0;
+}
+
+.scale-options {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.scale-options ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+}
+
+#about .question-callout {
+  color: var(--text);
+  background: var(--surface-muted);
+  border: 1px solid var(--line);
+}
+
+.early-access-form {
+  display: grid;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.early-access-form label {
+  display: block;
+  min-width: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.optional-label {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.early-access-form input,
+.early-access-form select,
+.early-access-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.45rem;
+  padding: 0.85rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font: inherit;
+}
+
+.early-access-form textarea {
+  resize: vertical;
+}
+
+.early-access-form input:focus-visible,
+.early-access-form select:focus-visible,
+.early-access-form textarea:focus-visible,
+.button:focus-visible,
+.site-footer a:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+}
+
+.early-access-form .form-note {
+  max-width: none;
+}
+
+.early-access-form .button {
+  width: fit-content;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.form-honeypot {
+  display: none;
+}
+
+.legacy-anchor {
+  position: absolute;
+  top: 0;
+  scroll-margin-top: 6rem;
+}
+
+.site-footer a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .focus-grid,
+  .team-grid,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .early-access-form .button {
+    width: 100%;
+  }
+}

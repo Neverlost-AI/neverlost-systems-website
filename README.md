@@ -1,77 +1,67 @@
 # Neverlost Systems Website
 
-Public source for **[neverlostsystems.com](https://neverlostsystems.com/)**.
+Source for [neverlostsystems.com](https://neverlostsystems.com/).
 
-Neverlost Systems is building patient advocacy and software around a simple problem: patients should not have to start their story over at every appointment, and providers should not have to reconstruct it from scratch each time.
+Patient-side infrastructure for complex healthcare. The website introduces the
+patient-side coordination gap, the shared Neverlost OS infrastructure in
+development, and a planned virtual pilot for POTS / EDS patients and families.
 
-The public site centers the company around carrying complex health context forward, preparing what matters for the encounter in front of the patient and provider, and keeping that information connected to the original evidence.
+## Homepage
 
-## What the site presents
+- One hero action: Join Early Access.
+- Technology, structure, and knowledge on the patient side.
+- Neverlost OS as the shared infrastructure layer, clearly in development.
+- Planned virtual patient-advocacy pilot and NSF I-Corps customer discovery beginning November 2026.
+- Three selected public demonstrations from four working prototypes. Their learnings inform Neverlost OS; they are not presented as an integrated production platform.
+- Organizational licensing and implementation services as the planned long-term scale model.
+- Founder story and Jeff Summerhays / Yuki Miyake team information.
+- An early-access form; general inquiries use jeff@neverlostsystems.com in the footer.
 
-The homepage now focuses on:
+## Selected working prototypes
 
-- the patient/provider reconstruction problem inside limited clinical time;
-- carrying longitudinal context forward instead of repeatedly rebuilding it;
-- patient advocacy and appointment preparation as the initial commercial focus;
-- clear boundaries between software, advocates, patients, and clinical decision-making;
-- two live public applications: Neverlost V2 and Case Navigator;
-- customer discovery and the questions Neverlost is still validating;
-- the founder story behind the problem and product direction.
+- [Full Human Pathway](https://neverlost-full-human-pathway.vercel.app/): coordinate the person’s broader situation and prepare the next handoff.
+- [Neverlost V2](https://neverlost-v1-portfolio.vercel.app/v2): organize and examine source-linked evidence in context.
+- [Case Navigator](https://neverlost-case-navigator.vercel.app/): review AI-generated findings before accepting them into a case.
 
-The homepage intentionally does **not** present the older product-family architecture, Command Center, V1.1, the eight-step development loop, or a standalone “Why AI” section as the primary company story. Those remain part of the broader technical history and product direction where relevant.
+Public demonstrations use fictional / synthetic cases.
 
-## Live software
+## Implementation and local preview
 
-- **Neverlost V2 — Live Evidence Analysis** — source-linked evidence analysis, prioritization, review, and synthesis while keeping outputs connected to the underlying evidence.
-  - https://neverlost-v1-portfolio.vercel.app/v2
-- **Neverlost Case Navigator** — human-reviewed AI workflow where proposed findings can be accepted, edited, rejected, or held before reviewed information becomes part of the case.
-  - https://neverlost-case-navigator.vercel.app/
+The existing static stack remains: semantic HTML, responsive CSS, vanilla
+JavaScript, and GA4 section/navigation events. No package manager, application
+build, TypeScript, linter, or automated test suite is configured in this repository.
 
-These are early-stage applications and technical demonstrations, not production clinical systems or substitutes for professional care.
-
-## Implementation
-
-The site is deliberately lightweight and dependency-free:
-
-- semantic HTML;
-- CSS with responsive layouts and the current Neverlost visual identity;
-- vanilla JavaScript for site interactions;
-- GA4 analytics, including section-view events for the current homepage structure;
-- custom-domain configuration through `CNAME`;
-- direct links to the live Neverlost applications.
-
-There is no application build step or package dependency required to preview the site.
-
-## Local preview
+The original `assets/nvlt-official-logo.svg`, `styles.css`, `brand-refresh.css`,
+font stack, domain file, and palette are retained. `positioning.css` provides
+limited overrides for spacing, light surfaces, typography, and the inline form.
 
 From the repository root:
 
-```bash
-python -m http.server 8000
+```sh
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Then open:
+Open http://127.0.0.1:8000/.
 
-```text
-http://localhost:8000
-```
+## Early-access delivery
 
-Opening `index.html` directly also works for most of the static site.
+The inline form retains the site's existing FormSubmit service, with:
 
-## Public / private boundary
+- POST destination: `https://formsubmit.co/jeff@neverlostsystems.com`
+- Required name and email; optional role and interest.
+- Subject: `Neverlost Systems early access`.
+- A honeypot and the provider's default spam protection.
+- A visible instruction not to submit sensitive medical information.
 
-This repository is intentionally public-facing. It does **not** contain private medical records, client information, credentials, or controlled internal case data.
+FormSubmit may require the recipient to activate the form via an email link.
+The new recipient's activation and actual inbox delivery must be confirmed
+before release. Local review checks the destination, field serialization,
+required fields, and responsive layout without sending an external submission.
+No local success message claims delivery; the form service handles the response.
 
-The site describes early-stage products, patient-advocacy work, customer discovery, and prototypes. It should not be read as a claim of proven clinical outcomes or as medical, legal, social-work, or benefits advice.
+## Release boundary
 
-## Related public repositories
-
-- [`neverlost-case-navigator`](https://github.com/Neverlost-AI/neverlost-case-navigator)
-- [`neverlost-v1`](https://github.com/Neverlost-AI/neverlost-v1)
-- [`Neverlost-full-human-pathway`](https://github.com/Neverlost-AI/Neverlost-full-human-pathway)
-- [`Neverlost-capacity-aware-publishing`](https://github.com/Neverlost-AI/Neverlost-capacity-aware-publishing)
-- [`reusable-codex-skills`](https://github.com/Neverlost-AI/reusable-codex-skills)
-
-## Status
-
-**Live public website · patient-advocacy focus · working software · active customer discovery**
+This revision is for review. Do not deploy until it has been reviewed.
+The pilot remains planned, Neverlost OS remains in development, and customer
+demand and healthcare partnerships are not represented as validated or signed.
+The website and prototype demonstrations do not replace professional care.

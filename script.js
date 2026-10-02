@@ -2,7 +2,7 @@
   const loaderScript = document.currentScript;
   const baseUrl = new URL('.', loaderScript?.src || window.location.href);
 
-  // Preserve the existing site behavior in a separate immutable core file.
+  // Shared navigation, header, and site interactions.
   const coreScript = document.createElement('script');
   coreScript.src = new URL('script-core.js', baseUrl).href;
   coreScript.async = false;
@@ -11,13 +11,13 @@
   const sectionNames = {
     top: 'Home / Hero',
     'encounter-problem': 'Two Perspectives / Encounter Problem',
-    'how-it-works': 'How It Works',
-    advocacy: 'Patient Advocacy',
-    roles: 'Clear Roles',
-    'live-demos': 'Live Software',
-    learning: 'What We Are Learning',
+    solution: 'Technology / Structure / Knowledge',
+    'neverlost-os': 'Neverlost OS / Shared Infrastructure',
+    advocacy: 'Initial Focus / Planned Pilot',
+    'live-demos': 'Selected Working Prototypes',
+    healthcare: 'Healthcare / Planned Scale Model',
     about: 'Why I Built Neverlost',
-    contact: 'Contact'
+    'early-access': 'Join Early Access'
   };
 
   const sections = Object.keys(sectionNames)
