@@ -1,4 +1,20 @@
-/* Modest refinements using the existing palette, fonts, and layout system. */
+/* Homepage positioning and layout.
+   Visual direction follows the current Neverlost investor deck:
+   navy anchors, pale blue panels, restrained borders, condensed headings,
+   and simple horizontal information blocks. */
+
+:root {
+  --deck-navy: #081f35;
+  --deck-navy-card: #1b3b55;
+  --deck-ink: #17283a;
+  --deck-muted: #5d6e7f;
+  --deck-page: #f4f8fb;
+  --deck-panel: #e8f2f8;
+  --deck-panel-strong: #d3e5f2;
+  --deck-line: #a9c7db;
+  --deck-accent: #55a9de;
+}
+
 main > .section::before,
 main > .section::after {
   display: none;
@@ -8,33 +24,147 @@ main > .section::after {
   scroll-margin-top: 6rem;
 }
 
+main h1,
+main h2,
+main h3 {
+  font-family: "Roboto Condensed", "Arial Narrow", "Inter", sans-serif;
+}
+
+main h1,
+main h2 {
+  font-weight: 500;
+}
+
+main h3 {
+  font-weight: 600;
+}
+
+main .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--brand);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+}
+
+main .eyebrow::before {
+  width: 20px;
+  height: 3px;
+  flex: 0 0 20px;
+  background: var(--deck-accent);
+  content: "";
+}
+
 #top {
-  background: var(--bg);
+  min-height: min(720px, 78vh);
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background: var(--deck-navy);
+}
+
+#top .container {
+  width: min(calc(100% - 2rem), var(--max-width));
+}
+
+#top .hero-grid {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 1040px;
+}
+
+#top .eyebrow {
+  color: #d9e8f4;
 }
 
 #top h1 {
-  max-width: 960px;
+  max-width: 980px;
+  margin-bottom: 1.6rem;
   padding: 0;
-  color: var(--text);
+  color: #fff;
   background: transparent;
   border-radius: 0;
-  font-size: clamp(2.5rem, 5vw, 4.7rem);
-  line-height: 1.12;
+  font-size: clamp(3.5rem, 7vw, 6.8rem);
+  font-weight: 400;
+  line-height: 0.98;
   letter-spacing: -0.045em;
 }
 
 #top .hero-lede {
-  max-width: 760px;
-  margin-bottom: 2rem;
-  line-height: 1.65;
+  max-width: 900px;
+  margin-bottom: 0;
+  color: #d9e5ee;
+  font-family: "Roboto Condensed", "Arial Narrow", "Inter", sans-serif;
+  font-size: clamp(1.45rem, 2.7vw, 2.15rem);
+  line-height: 1.28;
 }
 
-#top .hero-actions {
+.focus-section {
+  background: var(--deck-page);
+}
+
+.focus-section h2 {
+  max-width: 900px;
+  margin-bottom: 1.4rem;
+  color: var(--deck-ink);
+  font-size: clamp(2.7rem, 5vw, 4.8rem);
+}
+
+.focus-section .section-lede {
+  max-width: 78ch;
+  margin-bottom: 0.8rem;
+  color: var(--deck-ink);
+  font-size: 1.22rem;
+}
+
+.focus-support {
+  max-width: 74ch;
+  color: var(--deck-muted);
+  font-size: 1.05rem;
+}
+
+.pilot-roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2.75rem 0 2rem;
+}
+
+.roadmap-card {
+  min-width: 0;
+  min-height: 245px;
+  padding: 1.7rem;
+  background: var(--deck-panel);
+  border: 1px solid var(--deck-line);
+  border-radius: 18px;
+}
+
+.roadmap-card-highlight {
+  background: var(--deck-panel-strong);
+}
+
+.roadmap-card .product-status {
+  margin-bottom: 1.2rem;
+}
+
+.roadmap-card h3 {
+  margin-bottom: 1rem;
+  color: var(--deck-ink);
+  font-size: 1.65rem;
+  line-height: 1.1;
+}
+
+.roadmap-card p:last-child {
   margin-bottom: 0;
+  color: var(--deck-muted);
+}
+
+.focus-section > .container > .button {
+  margin-top: 0.15rem;
 }
 
 #encounter-problem {
-  background: var(--surface);
+  background: #fff;
 }
 
 #encounter-problem .eyebrow,
@@ -44,17 +174,21 @@ main > .section::after {
 }
 
 #encounter-problem h2 {
-  margin-inline: 0;
   max-width: 930px;
+  margin-inline: 0;
+  color: var(--deck-ink);
+  font-size: clamp(2.7rem, 5vw, 4.7rem);
 }
 
 #encounter-problem .section-lede {
   max-width: 78ch;
+  color: var(--deck-muted);
 }
 
 .comparison-title {
-  margin-top: 2.5rem;
-  font-size: 1.4rem;
+  margin-top: 2.6rem;
+  color: var(--deck-ink);
+  font-size: 1.45rem;
 }
 
 #encounter-problem .perspective-grid {
@@ -63,140 +197,205 @@ main > .section::after {
 }
 
 .perspective-card {
-  background: var(--bg);
+  min-height: 260px;
+  padding: 2rem;
+  background: var(--deck-panel);
+  border: 1px solid var(--deck-line);
+  border-radius: 18px;
   box-shadow: none;
+}
+
+.perspective-card:nth-child(2) {
+  background: var(--deck-panel-strong);
+}
+
+.perspective-label {
+  color: var(--brand);
+}
+
+.perspective-card blockquote {
+  color: var(--deck-ink);
+  font-family: "Roboto Condensed", "Arial Narrow", "Inter", sans-serif;
+  font-size: clamp(1.65rem, 2.8vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1.18;
 }
 
 #encounter-problem .encounter-summary {
   max-width: 78ch;
   margin: 1.5rem 0 0;
-  padding: 0;
-  color: var(--text-muted);
-  background: transparent;
-  border-radius: 0;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 1.15rem;
-  line-height: 1.65;
+  padding: 1.35rem 1.5rem;
+  color: var(--deck-ink);
+  background: var(--deck-page);
+  border-left: 4px solid var(--deck-accent);
+  border-radius: 0 16px 16px 0;
+  font-family: "Roboto Condensed", "Arial Narrow", "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
   letter-spacing: normal;
 }
 
-#solution,
-#healthcare {
-  background: var(--bg);
+#neverlost-os {
+  background: var(--deck-page);
 }
 
-.solution-pillars p {
-  max-width: 34ch;
-}
-
-.outcome-line {
-  margin: 2.75rem 0 0;
-  font-family: "Manrope", system-ui, sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
+#neverlost-os h2 {
+  margin-bottom: 2rem;
+  color: var(--deck-ink);
+  font-size: clamp(2.7rem, 5vw, 4.7rem);
 }
 
 .heading-status {
-  display: block;
-  margin-top: 0.55rem;
-  color: var(--text-muted);
-  font-size: 1.3rem;
+  display: inline;
+  margin-top: 0;
+  color: var(--deck-muted);
+  font-size: 0.6em;
+  font-weight: 400;
   letter-spacing: normal;
-  line-height: 1.4;
+  line-height: inherit;
 }
 
-.architecture {
-  display: grid;
-  gap: 0.85rem;
+.os-foundation {
+  padding: clamp(1.8rem, 3vw, 2.5rem);
+  color: #f7fbff;
+  background: var(--deck-navy);
+  border: 1px solid #294963;
+  border-radius: 18px;
 }
 
-.architecture-apps,
-.architecture-foundation {
-  padding: 1.5rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-}
-
-.architecture-foundation {
-  border-top: 3px solid var(--brand);
-}
-
-.architecture .card-label {
-  color: var(--brand);
-  font-size: 0.7rem;
-}
-
-.architecture p:last-child {
-  margin-bottom: 0;
-}
-
-.architecture-note,
-.prototype-note,
-.form-note {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.focus-grid,
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.2rem;
-  margin: 2.5rem 0;
-}
-
-.focus-card,
-.team-card {
-  min-width: 0;
-  padding: 1.75rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg);
-}
-
-.focus-card p:last-child,
-.team-card p:last-child,
-.team-card h3:last-child {
-  margin-bottom: 0;
-}
-
-.team-card h3 span {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 1rem;
+.os-foundation h3 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(2rem, 3vw, 2.8rem);
   font-weight: 500;
-  color: var(--text-muted);
 }
 
-#live-demos {
-  background: var(--surface);
+.os-foundation p {
+  max-width: 85ch;
+  margin-bottom: 0;
+  color: #d5e3ed;
+  font-size: 1.08rem;
 }
 
-#live-demos .product-card {
-  background: var(--bg);
+.os-apps-heading {
+  max-width: 850px;
+  margin-top: 3.2rem;
+}
+
+.os-apps-heading .eyebrow {
+  margin-bottom: 0.7rem;
+}
+
+.os-apps-heading h3 {
+  color: var(--deck-ink);
+  font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+  line-height: 1.18;
+}
+
+.os-app-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+#neverlost-os .product-card {
+  display: flex;
+  min-width: 0;
+  min-height: 360px;
+  flex-direction: column;
+  padding: 1.65rem;
+  background: var(--deck-panel);
+  border: 1px solid var(--deck-line);
+  border-radius: 18px;
+}
+
+#neverlost-os .product-card:nth-child(2) {
+  background: var(--deck-panel-strong);
+}
+
+#neverlost-os .product-card h3 {
+  color: var(--deck-ink);
+  font-size: 1.75rem;
+}
+
+#neverlost-os .product-card > p:not(.product-status) {
+  color: var(--deck-muted);
+}
+
+#neverlost-os .product-card .button {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .prototype-note {
-  margin: 1.5rem 0 0;
+  margin: 1.35rem 0 0;
+  color: var(--deck-muted);
+  font-size: 0.9rem;
 }
 
-.scale-options {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
+#about {
+  color: #f7fbff;
+  background: var(--deck-navy);
 }
 
-.scale-options ul {
-  margin-bottom: 0;
-  padding-left: 1.25rem;
-  color: var(--text-muted);
+#about .eyebrow {
+  color: #d9e8f4;
+}
+
+#about h2 {
+  color: #fff;
+  font-size: clamp(2.7rem, 5vw, 4.7rem);
+}
+
+#about p {
+  max-width: 78ch;
+  color: #d5e3ed;
 }
 
 #about .question-callout {
-  color: var(--text);
-  background: var(--surface-muted);
-  border: 1px solid var(--line);
+  max-width: 900px;
+  margin: 1.7rem 0;
+  padding: 1.45rem 1.6rem;
+  color: #fff;
+  background: var(--deck-navy-card);
+  border: 1px solid #52718a;
+  border-radius: 18px;
+  font-family: "Roboto Condensed", "Arial Narrow", "Inter", sans-serif;
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+#about .section-lede {
+  color: #e6f0f7;
+}
+
+#early-access {
+  background: var(--deck-page);
+}
+
+#early-access h2 {
+  max-width: 920px;
+  color: var(--deck-ink);
+  font-size: clamp(2.7rem, 5vw, 4.7rem);
+}
+
+#early-access .section-lede {
+  max-width: 80ch;
+  color: var(--deck-muted);
+}
+
+.partnership-intro {
+  margin-bottom: 2.4rem;
+}
+
+.contact-card {
+  align-items: stretch;
+  padding: 2.5rem;
+  background: #fff;
+  border: 1px solid var(--deck-line);
+  border-radius: 18px;
+  box-shadow: none;
 }
 
 .early-access-form {
@@ -215,12 +414,13 @@ main > .section::after {
 .early-access-form label {
   display: block;
   min-width: 0;
+  color: var(--deck-ink);
   font-size: 0.95rem;
   font-weight: 600;
 }
 
 .optional-label {
-  color: var(--text-muted);
+  color: var(--deck-muted);
   font-weight: 400;
 }
 
@@ -231,9 +431,9 @@ main > .section::after {
   width: 100%;
   margin-top: 0.45rem;
   padding: 0.85rem;
-  color: var(--text);
-  background: var(--surface);
-  border: 1px solid var(--line);
+  color: var(--deck-ink);
+  background: #fff;
+  border: 1px solid var(--deck-line);
   border-radius: 10px;
   font: inherit;
 }
@@ -253,6 +453,7 @@ main > .section::after {
 
 .early-access-form .form-note {
   max-width: none;
+  color: var(--deck-muted);
 }
 
 .early-access-form .button {
@@ -272,18 +473,65 @@ main > .section::after {
   scroll-margin-top: 6rem;
 }
 
+.site-footer {
+  color: #cddbe6;
+  background: var(--deck-navy);
+  border-top-color: #28465f;
+}
+
 .site-footer a {
+  color: #fff;
   overflow-wrap: anywhere;
 }
 
+.footer-wrap .footer-disclaimer {
+  color: #aebfcd;
+}
+
+@media (max-width: 900px) {
+  #top {
+    min-height: 0;
+  }
+
+  .pilot-roadmap,
+  .os-app-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-card,
+  #neverlost-os .product-card {
+    min-height: auto;
+  }
+
+  .perspective-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heading-status {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 640px) {
-  .focus-grid,
-  .team-grid,
+  #top h1 {
+    font-size: clamp(3rem, 15vw, 4.3rem);
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
 
-  .early-access-form .button {
+  .early-access-form .button,
+  .focus-section > .container > .button {
     width: 100%;
+  }
+
+  .contact-card,
+  .perspective-card,
+  .roadmap-card,
+  #neverlost-os .product-card {
+    padding: 1.4rem;
   }
 }
