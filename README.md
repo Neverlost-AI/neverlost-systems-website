@@ -8,13 +8,14 @@ development, and a planned virtual pilot for POTS / EDS patients and families.
 
 ## Homepage
 
-- One hero action: Join Early Access.
-- Technology, structure, and knowledge on the patient side.
-- Neverlost OS as the shared infrastructure layer, clearly in development.
-- Planned virtual patient-advocacy pilot and NSF I-Corps customer discovery beginning November 2026.
-- Three selected public demonstrations from four working prototypes. Their learnings inform Neverlost OS; they are not presented as an integrated production platform.
-- Organizational licensing and implementation services as the planned long-term scale model.
-- Founder story and Jeff Summerhays / Yuki Miyake team information.
+- Dark navy hero and pale blue panel system aligned with the current Neverlost investor-deck visual language.
+- POTS / EDS positioned as the initial patient community, emphasizing its highly engaged peer networks and complex multi-provider care.
+- Customer-facing pilot roadmap: late-2026 preparation, January 2027 virtual pilot, then product improvement and broader access.
+- The first Join Early Access action appears with the POTS / EDS pilot roadmap and explicitly references January 2027.
+- The patient-side coordination gap remains the core problem statement.
+- Neverlost OS is presented as the shared infrastructure layer in development.
+- Full Human Pathway, Neverlost V2, and Case Navigator now sit directly beneath Neverlost OS in one horizontal desktop row.
+- The founder story remains, while team titles and the long-term organizational scale model have been removed from the customer-facing homepage.
 - An early-access form; general inquiries use jeff@neverlostsystems.com in the footer.
 
 ## Selected working prototypes
@@ -32,8 +33,10 @@ JavaScript, and GA4 section/navigation events. No package manager, application
 build, TypeScript, linter, or automated test suite is configured in this repository.
 
 The original `assets/nvlt-official-logo.svg`, `styles.css`, `brand-refresh.css`,
-font stack, domain file, and palette are retained. `positioning.css` provides
-limited overrides for spacing, light surfaces, typography, and the inline form.
+domain file, and core palette are retained. `positioning.css` now carries the
+homepage-specific deck-inspired visual system, including condensed headings,
+navy anchor sections, pale blue panels, responsive roadmap cards, and the
+horizontal Neverlost OS application row.
 
 From the repository root:
 
