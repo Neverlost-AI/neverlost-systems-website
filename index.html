@@ -29,7 +29,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="brand-refresh.css">
   <link rel="stylesheet" href="positioning.css">
@@ -130,9 +130,9 @@
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
       <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+        <a href="#advocacy">POTS + EDS</a>
+        <a href="#encounter-problem">Why Neverlost</a>
         <a href="#neverlost-os">Neverlost OS</a>
-        <a href="#live-demos">Prototypes</a>
-        <a href="#advocacy">Initial Focus</a>
         <a href="#about">About</a>
         <a href="#early-access">Join Early Access</a>
       </nav>
@@ -146,10 +146,36 @@
           <p class="eyebrow">Neverlost Systems</p>
           <h1>Patient-side infrastructure for complex healthcare.</h1>
           <p class="hero-lede">We build patient-side infrastructure that brings industry-leading technology, structure, and knowledge to people managing complex care, reducing the burden of obtaining, coordinating, and managing treatment across the healthcare journey.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#early-access">Join Early Access</a>
-          </div>
+</div>
+      </div>
+    </section>
+
+    <section id="advocacy" class="section focus-section">
+      <div class="container">
+        <p class="eyebrow">Initial focus</p>
+        <h2>Starting where the burden is highest.</h2>
+        <p class="section-lede">We’re beginning with POTS and EDS — a highly engaged patient community that has already built strong networks for sharing knowledge, experiences, resources, and support while navigating complex, fragmented care.</p>
+        <p class="focus-support">Complex, multi-provider care makes the patient-side coordination gap especially visible here.</p>
+
+        <div class="pilot-roadmap" aria-label="Neverlost POTS and EDS pilot roadmap">
+          <article class="roadmap-card">
+            <p class="product-status">Late 2026</p>
+            <h3>Virtual pilot preparation</h3>
+            <p>Preparing the pilot with input from patients and the community.</p>
+          </article>
+          <article class="roadmap-card roadmap-card-highlight">
+            <p class="product-status">January 2027</p>
+            <h3>First virtual POTS / EDS pilot</h3>
+            <p>Patients will begin using Neverlost in real-world complex-care workflows.</p>
+          </article>
+          <article class="roadmap-card">
+            <p class="product-status">2027</p>
+            <h3>Improve and expand access</h3>
+            <p>Use what we learn from the pilot to improve Neverlost and expand access to more patients navigating complex care.</p>
+          </article>
         </div>
+
+        <a class="button button-primary" href="#early-access">Join Early Access · January 2027 Pilot</a>
       </div>
     </section>
 
@@ -175,89 +201,28 @@
       </div>
     </section>
 
-    <section id="solution" class="section">
-      <div class="container">
-        <p class="eyebrow">The solution</p>
-        <h2>Technology, structure, and knowledge on the patient side.</h2>
-        <div class="problem-grid solution-pillars">
-          <article>
-            <h3>Technology</h3>
-            <p>Modern software built around the patient side of complex care.</p>
-          </article>
-          <article>
-            <h3>Structure</h3>
-            <p>Continuity across providers, records, treatments, benefits, decisions, and time.</p>
-          </article>
-          <article>
-            <h3>Knowledge</h3>
-            <p>Better organization and preparation so patients can navigate care with greater context.</p>
-          </article>
-        </div>
-        <p class="outcome-line">Less burden obtaining, coordinating, and managing care.</p>
-      </div>
-    </section>
-
     <section id="neverlost-os" class="section section-muted">
-      <div class="container split-grid">
-        <div>
-          <p class="eyebrow">Shared infrastructure</p>
-          <h2>Neverlost OS <span class="heading-status">— In Development</span></h2>
-          <p class="section-lede">The shared patient-side infrastructure layer that powers Neverlost Systems software, preserving context and continuity across the full care journey.</p>
-        </div>
-        <div class="architecture" aria-label="Planned architecture: Neverlost software sits above Neverlost OS, the shared infrastructure layer in development.">
-          <div class="architecture-apps">
-            <p class="card-label">Neverlost software</p>
-            <p>Patient and care workflows</p>
-          </div>
-          <div class="architecture-foundation">
-            <p class="card-label">Shared infrastructure layer · In development</p>
-            <h3>Neverlost OS</h3>
-            <p>Context and continuity across the full care journey</p>
-          </div>
-          <p class="architecture-note">Planned architecture. Prototype learnings inform its development.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="advocacy" class="section">
       <div class="container">
-        <p class="eyebrow">Initial focus</p>
-        <h2>Initial focus: POTS / EDS patients and families</h2>
-        <p class="section-lede">Complex, multi-provider care makes the patient-side coordination gap especially visible in POTS and EDS.</p>
-        <div class="focus-grid">
-          <article class="focus-card">
-            <p class="product-status">Planned pilot</p>
-            <h3>Virtual patient-advocacy pilot</h3>
-            <p>We are preparing a virtual pilot where patients can use Neverlost in real-world complex-care workflows, generating the feedback and evidence needed to refine the product.</p>
-          </article>
-          <article class="focus-card">
-            <p class="product-status">Customer discovery · Begins November 2026</p>
-            <h3>NSF I-Corps — November 2026</h3>
-            <p>Structured customer discovery with patients, providers, and healthcare organizations.</p>
-          </article>
+        <p class="eyebrow">Shared infrastructure</p>
+        <h2>Neverlost OS <span class="heading-status">— In Development</span></h2>
+
+        <div class="os-foundation" aria-label="Neverlost OS shared patient-side infrastructure layer">
+          <h3>Neverlost OS</h3>
+          <p>The shared patient-side infrastructure layer being built to preserve context and continuity across providers, records, treatments, benefits, decisions, and time.</p>
         </div>
-        <a class="button button-primary" href="#early-access">Join Early Access</a>
-      </div>
-    </section>
 
-    <section id="live-demos" class="section">
-      <div class="container">
-        <p class="eyebrow">Selected working prototypes</p>
-        <h2>Built through real experience</h2>
-        <p class="section-lede">Four working prototypes have explored different problems across the complex-care journey. Selected public demonstrations are below. Their learnings are informing the development of Neverlost OS.</p>
+        <div class="os-apps-heading">
+          <p class="eyebrow">Working applications</p>
+          <h3>Built around real problems across the complex-care journey.</h3>
+        </div>
 
-        <div class="product-grid">
-          <article class="product-card product-feature">
-            <div class="product-feature-heading">
-              <p class="product-status">Working prototype</p>
-              <h3>Full Human Pathway</h3>
-              <p class="product-feature-tagline">The whole person. A clearer next step.</p>
-            </div>
-            <div class="product-feature-content">
-              <p>Coordinate the person’s broader situation and prepare the next handoff.</p>
-              <p>See what can be prepared now, what still needs clarification, and who needs to review the next decision.</p>
-              <a class="button button-primary" href="https://neverlost-full-human-pathway.vercel.app/" target="_blank" rel="noreferrer">See how it works <span aria-hidden="true">↗</span></a>
-            </div>
+        <div class="product-grid os-app-grid">
+          <article class="product-card">
+            <p class="product-status">Working prototype</p>
+            <h3>Full Human Pathway</h3>
+            <p>Coordinate the person’s broader situation and prepare the next handoff.</p>
+            <p>See what can be prepared now, what still needs clarification, and who needs to review the next decision.</p>
+            <a class="button button-primary" href="https://neverlost-full-human-pathway.vercel.app/" target="_blank" rel="noreferrer">See how it works <span aria-hidden="true">↗</span></a>
           </article>
 
           <article class="product-card">
@@ -276,26 +241,8 @@
             <a class="button button-primary" href="https://neverlost-case-navigator.vercel.app/" target="_blank" rel="noreferrer">Open Case Navigator <span aria-hidden="true">↗</span></a>
           </article>
         </div>
-        <p class="prototype-note">Public demonstrations use fictional / synthetic cases.</p>
-      </div>
-    </section>
 
-    <section id="healthcare" class="section">
-      <div class="container split-grid">
-        <div>
-          <p class="eyebrow">Long-term model</p>
-          <h2>Built for patients. Designed to work alongside healthcare.</h2>
-        </div>
-        <div>
-          <p class="section-lede">Our long-term model extends beyond direct patient access. Neverlost Systems is designed to complement healthcare organizations by providing infrastructure on the patient side of the care journey.</p>
-          <div class="scale-options">
-            <h3>Planned scale model</h3>
-            <ul>
-              <li>Organizational licensing</li>
-              <li>Implementation services</li>
-            </ul>
-          </div>
-        </div>
+        <p class="prototype-note">Public demonstrations use fictional / synthetic cases.</p>
       </div>
     </section>
 
@@ -311,24 +258,15 @@
         <p>The question became larger than my own case:</p>
         <div class="question-callout">What would it look like if the context carried forward?</div>
         <p class="section-lede"><strong>Neverlost is where I started trying to build an answer to that problem.</strong></p>
-        <div class="team-grid">
-          <article class="team-card">
-            <h3>Jeff Summerhays <span>— Founder</span></h3>
-          </article>
-          <article class="team-card">
-            <h3>Yuki Miyake <span>— Technical Lead</span></h3>
-            <p>10 years of software development experience. Helps lead technical implementation.</p>
-          </article>
-        </div>
-      </div>
+</div>
     </section>
 
     <section id="early-access" class="section section-muted contact-section" aria-labelledby="early-access-title">
       <span id="contact" class="legacy-anchor" aria-hidden="true"></span>
       <div class="container partnership-intro">
-        <p class="eyebrow">Planned virtual pilot</p>
-        <h2 id="early-access-title">Join Early Access</h2>
-        <p class="section-lede">We’re preparing an initial virtual pilot for POTS / EDS patients and families managing complex, multi-provider care. Join the early-access list if you’re interested in participating or hearing when the pilot opens.</p>
+        <p class="eyebrow">January 2027 virtual pilot</p>
+        <h2 id="early-access-title">Join Early Access for the January 2027 Pilot</h2>
+        <p class="section-lede">We’re preparing our first virtual pilot for January 2027 with POTS / EDS patients and families managing complex, multi-provider care. Join the early-access list if you’re interested in participating or hearing when the pilot opens.</p>
       </div>
       <div class="container contact-card">
         <form id="early-access-form" class="early-access-form" action="https://formsubmit.co/jeff@neverlostsystems.com" method="POST" aria-labelledby="early-access-title" aria-describedby="early-access-note">
@@ -367,7 +305,7 @@
   <footer class="site-footer">
     <div class="container footer-wrap">
       <p>© <span id="year"></span> Neverlost Systems.</p>
-      <p>Investors, collaborators, and healthcare organizations: <a href="mailto:jeff@neverlostsystems.com">jeff@neverlostsystems.com</a></p>
+      <p>Questions or collaboration: <a href="mailto:jeff@neverlostsystems.com">jeff@neverlostsystems.com</a></p>
       <p class="footer-disclaimer">Neverlost Systems is an early-stage healthcare technology company. Website content and working prototypes are for informational and demonstration purposes and are not medical advice, diagnosis, treatment, or emergency services. Prototype cases are fictional unless otherwise stated. Neverlost does not replace the judgment of patients, licensed healthcare professionals, or other authorized decision-makers.</p>
     </div>
   </footer>
