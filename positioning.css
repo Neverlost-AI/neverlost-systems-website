@@ -27,7 +27,8 @@ main > .section { overflow: visible; }
 .site-header { background: #081f35; box-shadow: none; }
 .nav-toggle { background: var(--dark); color: #fff; }
 .brand { font-size: 1rem; letter-spacing: -.025em; }
-.primary-nav a { font-size: 1rem; }
+.primary-nav a { font-size: 1rem; color: #fff; }
+.primary-nav a:hover, .primary-nav a:focus-visible { color: #fff; }
 .primary-nav a:last-child { color: #fff; border-bottom: 0; text-decoration: none; }
 #top { min-height: 0; background: var(--deck-page); color: var(--text); padding: 6rem 0 5.5rem; }
 #top .hero-grid { display: block; }
