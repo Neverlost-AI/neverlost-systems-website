@@ -11,13 +11,14 @@
   const sectionNames = {
     top: 'Home / Hero',
     'encounter-problem': 'Two Perspectives / Encounter Problem',
-    solution: 'Technology / Structure / Knowledge',
-    'neverlost-os': 'Neverlost OS / Shared Infrastructure',
-    advocacy: 'Initial Focus / Planned Pilot',
-    'live-demos': 'Selected Working Prototypes',
-    healthcare: 'Healthcare / Planned Scale Model',
+    'guiding-question': 'What Work Can We Take Off the Patient',
+    'initial-product': 'One Connected Healthcare Product',
+    'live-demos': 'Fictional Alex Care Walkthrough',
+    clinics: 'For Clinics / Discuss a Pilot',
+    advocacy: 'POTS and EDS / Pilot Progression',
     about: 'Why I Built Neverlost',
-    'early-access': 'Join Early Access'
+    'neverlost-os': 'Neverlost OS / Shared Infrastructure',
+    'early-access': 'Patient Waitlist'
   };
 
   const sections = Object.keys(sectionNames)
@@ -60,3 +61,4 @@
 
   sections.forEach(({ element }) => observer.observe(element));
 })();
+
