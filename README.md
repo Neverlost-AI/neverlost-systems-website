@@ -1,70 +1,82 @@
-# Neverlost Systems Website
+# Neverlost Systems website
 
-Source for [neverlostsystems.com](https://neverlostsystems.com/).
+Static source for [neverlostsystems.com](https://neverlostsystems.com/).
+Neverlost Systems is the company; Neverlost Healthcare is its connected,
+patient-side healthcare application in development.
 
-Patient-side infrastructure for complex healthcare. The website introduces the
-patient-side coordination gap, the shared Neverlost OS infrastructure in
-development, and a planned virtual pilot for POTS / EDS patients and families.
+## Homepage story
 
-## Homepage
+The homepage moves from the appointment problem to a connected product:
 
-- Dark navy hero and pale blue panel system aligned with the current Neverlost investor-deck visual language.
-- POTS / EDS positioned as the initial patient community, emphasizing its highly engaged peer networks and complex multi-provider care.
-- Customer-facing pilot roadmap: late-2026 preparation, January 2027 virtual pilot, then product improvement and broader access.
-- The first Join Early Access action appears with the POTS / EDS pilot roadmap and explicitly references January 2027.
-- The patient-side coordination gap remains the core problem statement.
-- Neverlost OS is presented as the shared infrastructure layer in development.
-- Full Human Pathway, Neverlost V2, and Case Navigator now sit directly beneath Neverlost OS in one horizontal desktop row.
-- The founder story remains, while team titles and the long-term organizational scale model have been removed from the customer-facing homepage.
-- An early-access form; general inquiries use jeff@neverlostsystems.com in the footer.
+1. Prepare what matters for your next appointment.
+2. Patient and provider perspectives on the same conversation.
+3. Capture experiences, bring history together, review changes, prepare two
+   audience-specific reports, and carry context into follow-up.
+4. A fictional Alex walkthrough: primary care, neurology, and PCP follow-up.
+5. A separate invitation for physician-led clinic evaluation, with preparation
+   burden, provider review time, clarification, and follow-through as proposed measures.
+6. Preparation/readiness, focused evaluation, then paid adoption and expansion
+   if supported by evidence. January 2027 remains a target, not a guaranteed date.
+7. The founder story, underlying OS foundation, and patient waitlist.
 
-## Selected working prototypes
+Earlier V2, Case Navigator, and Full Human Pathway prototypes remain linked as
+secondary background. They are not presented as three current products.
+No public price or funding assumptions are included. Practice-sponsored access
+is described as a proposed model, with separate patient sharing permissions.
 
-- [Full Human Pathway](https://neverlost-full-human-pathway.vercel.app/): coordinate the person’s broader situation and prepare the next handoff.
-- [Neverlost V2](https://neverlost-v1-portfolio.vercel.app/v2): organize and examine source-linked evidence in context.
-- [Case Navigator](https://neverlost-case-navigator.vercel.app/): review AI-generated findings before accepting them into a case.
+## Walkthrough scope
 
-Public demonstrations use fictional / synthetic cases.
+The homepage walkthrough is a public-facing illustration of the prototype's
+connected workflow. Its patient questions and provider-context examples are
+illustrative; they are not copied clinical reports or a running application.
+It uses fictional Alex and clearly states that provider delivery is simulated.
+No private Cloud Run URL, patient data, API credentials, or private application
+access is exposed. A public URL for the connected demo video was not available
+when preparing this revision; a reviewed public video can be added later.
 
-## Implementation and local preview
+All three stages are readable without JavaScript. When JavaScript is available,
+tabs support click, Left/Right arrows, Home/End, and keyboard focus. The two
+audience views stay together at each stage.
 
-The existing static stack remains: semantic HTML, responsive CSS, vanilla
-JavaScript, and GA4 section/navigation events. No package manager, application
-build, TypeScript, linter, or automated test suite is configured in this repository.
+## Source and preview
 
-The original `assets/nvlt-official-logo.svg`, `styles.css`, `brand-refresh.css`,
-domain file, and core palette are retained. `positioning.css` now carries the
-homepage-specific deck-inspired visual system, including condensed headings,
-navy anchor sections, pale blue panels, responsive roadmap cards, and the
-horizontal Neverlost OS application row.
+The existing static stack, navy palette, Montserrat/Source Sans 3 fonts,
+official logo assets, domain file, and shared core script are preserved.
+`healthcare.css` adds scoped layouts; `walkthrough.js` progressively enhances
+the fictional case. `script.js` names the current analytics sections.
 
-From the repository root:
+For an ordinary local checkout:
 
 ```sh
 python -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:8000/.
+Open http://127.0.0.1:8000/. No framework build or package installation is needed.
+The managed review environment uses its provided preview service instead.
 
-## Early-access delivery
+## Contact and privacy
 
-The inline form retains the site's existing FormSubmit service, with:
+The patient waitlist retains the existing POST destination:
+`https://formsubmit.co/jeff@neverlostsystems.com`.
+Required fields are name and email. The subject is `Neverlost Healthcare waitlist`.
+The honeypot, field limits, and FormSubmit response behavior are retained.
+The page explains email use, opt-out contact, participation limits, and the
+instruction not to submit medical records or sensitive health details.
 
-- POST destination: `https://formsubmit.co/jeff@neverlostsystems.com`
-- Required name and email; optional role and interest.
-- Subject: `Neverlost Systems early access`.
-- A honeypot and the provider's default spam protection.
-- A visible instruction not to submit sensitive medical information.
+The clinic action opens a separate email to `jeff@neverlostsystems.com` with a
+clinic-pilot subject. It does not enroll a person on the patient waitlist.
+`privacy.html` explains website signup, clinic email, FormSubmit, and existing
+Google Analytics use. It covers the public website, not patient-data processing.
 
-FormSubmit may require the recipient to activate the form via an email link.
-The new recipient's activation and actual inbox delivery must be confirmed
-before release. Local review checks the destination, field serialization,
-required fields, and responsive layout without sending an external submission.
-No local success message claims delivery; the form service handles the response.
+FormSubmit recipient activation and actual inbox delivery remain unverified.
+Review checks must not submit a real signup or send a clinic email without
+authorization. No local success message claims delivery.
 
 ## Release boundary
 
 This revision is for review. Do not deploy until it has been reviewed.
-The pilot remains planned, Neverlost OS remains in development, and customer
-demand and healthcare partnerships are not represented as validated or signed.
-The website and prototype demonstrations do not replace professional care.
+The existing public site and GitHub Pages branch remain the release reference.
+Verify the walkthrough, form behavior, privacy copy, links, and responsive layout
+before publishing. Product and pilot plans are not represented as clinical
+validation, signed partnerships, or an operating patient service.
+
